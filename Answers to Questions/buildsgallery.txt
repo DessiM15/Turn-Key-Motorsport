@@ -1,0 +1,12 @@
+Each build entry should include:
+
+Vehicle make/model/year
+List of mods / work performed
+Before/after HP and torque numbers
+Multiple photos (at minimum a hero shot and an engine bay shot)
+Short write-up describing the build goals and results
+Total build cost range (optional — client can decide later whether to show this)
+
+Yes, builds should be taggable by category — at minimum: Street, Drag, Track, Daily Driver, and Full Build. Users should be able to filter the gallery by these tags as well as by vehicle make.
+Admin-managed only for now. The shop controls what goes in the gallery — these are curated showcase pieces, not user submissions. However, scaffold it in a way that a customer submission flow could be added later without rearchitecting (e.g., a simple data model that could accept a "submitted" status vs. "published" status down the road).
+For the mock data, create 8–10 build entries that feel realistic — mix of makes and models, different build types, varying HP levels. Make them sound like real project summaries a shop would be proud to show off.

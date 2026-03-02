@@ -1,0 +1,12 @@
+User accounts — yes, scaffold the UI for accounts but don't build real auth. Build the account pages and flows visually (sign up, log in, account dashboard with order history, saved vehicles, profile info) so the client can see what it will look like, but use mock data and don't wire up a real authentication system. The client will decide on their e-commerce platform later (Shopify, WooCommerce, custom) and auth will come with that. Just make sure the data model and component structure would support plugging in a real auth provider (NextAuth, Supabase Auth, or whatever the e-commerce platform provides) without rearchitecting.
+The account dashboard should include placeholders for:
+
+Order history
+Saved vehicle profiles (year/make/model — so the site can recommend compatible parts)
+Saved addresses
+Wishlist / saved parts
+Profile info and password change
+
+Newsletter signup — scaffold with no specific service for now. The form captures the email, hits an API route, and stores it locally or logs it. Structure the API route so it's a clean swap to plug in Mailchimp, ConvertKit, or whatever the client picks later. Add a comment in the code like // TODO: Wire to email service (Mailchimp, ConvertKit, etc.) so it's obvious where the integration point is.
+Contact form and booking form — same approach. Forms submit to API routes that log the data. Structure them for easy webhook or email service integration later. No real email sending for now — just clean submission handling with success/error states in the UI.
+The pattern across all of this: build the frontend experience fully, mock the backend, and leave clean integration points. The client should be able to look at this site and see exactly what their customers will experience, even if the plumbing isn't connected yet.

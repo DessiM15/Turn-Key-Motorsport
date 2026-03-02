@@ -1,0 +1,16 @@
+Services to list (scaffold all of these, client can adjust the specifics later):
+
+Full engine builds (the flagship service)
+Engine installation
+Performance parts installation (including customer-supplied parts)
+Dyno tuning
+Diagnostics and troubleshooting
+Custom fabrication
+Supercharger / turbo kit installation
+Suspension and drivetrain upgrades
+Pre-purchase inspections (for people buying used performance cars)
+Maintenance and servicing for modified vehicles
+
+Each service should have: a short description, a placeholder image, estimated timeline range (e.g., "2-5 days"), a price range or "Contact for quote", and a CTA that routes to the booking form.
+For booking — go with a "Request a Consultation" form, not a full scheduling calendar. Most performance shops don't do same-day bookings. The flow is: customer fills out a form, the shop reviews it and reaches out to schedule. The form should capture: name, phone, email, vehicle year/make/model, service(s) interested in (multi-select from the list above), brief description of what they're looking for, preferred contact method (call vs. email), and an optional file upload field for photos of their current setup.
+For handling submissions — just email notification for now. Form submits, shop gets an email with the details. Scaffold it so a CRM or more advanced notification system could plug in later, but don't build any actual CRM integration. Keep the backend simple — the form data hits an API route that could be wired to any email service or webhook down the road.

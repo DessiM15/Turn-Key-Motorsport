@@ -1,0 +1,6 @@
+Before you generate the project spec, read these two files:
+
+turnkey-motorsports-claude-code-prompt.md — this is the full project brief I prepared before we started. It has the complete reference site analysis, design direction, every page spec, features list, placeholder content guidance, and the phased build plan. Everything we just discussed in the interview is already documented here, plus additional detail. Use this as your primary source of truth.
+CODEBAKERS.md — you'll need this during Stage 3 when building the prompt, but read it now so the coding patterns inform your spec and architecture decisions.
+
+Merge what we discussed in the interview with what's in the project brief. Where they overlap, the interview answers take priority since they're more recent. Where the brief has detail we didn't cover in the interview (like specific homepage sections, animation direction, file structure, quality standards), incorporate all of it.

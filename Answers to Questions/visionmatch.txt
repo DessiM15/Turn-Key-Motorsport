@@ -1,0 +1,8 @@
+That matches the vision well. A few additions and refinements:
+Add a dedicated Testimonials / Reviews page — not just testimonials on the homepage. This is a standalone page where customers can read reviews and submit their own. Trust is everything in this space.
+The Homepage should also include: an announcement/promo bar at the top, a "Shop by Category" tile grid, a "Why Choose Us" stats section (builds completed, years experience, etc.), a testimonials carousel, a social proof / Instagram feed placeholder, and a newsletter signup — all of that is detailed in the project brief.
+For Engine Packages — think of them less like "Stage 1/2/3" and more like HP-target tiers (e.g., 500HP, 700HP, 1000HP builds) the way Fathouse Performance does it. Each tier should have its own detail page with full parts breakdown, pricing, and a CTA to book a consultation.
+For the Parts Catalog — needs a "Shop by Vehicle" filter (make/model/year) AND a "Shop by Category" filter (intake, exhaust, fuel system, etc.). Product pages need fitment/compatibility info, multiple images, reviews, and related products. Cart should be a slide-out drawer, not a separate page.
+Apparel / Merch section — this should exist as a category within the shop, like Calvo and FRP have. Branded hats, shirts, hoodies.
+Priority order for building: Home → Shop/Parts → Engine Packages → Services → Gallery → Testimonials → About/Blog/FAQ/Contact → Cart/Checkout → Polish. But that's already laid out in the phased build plan in the prompt.
+Everything else looks good — proceed.

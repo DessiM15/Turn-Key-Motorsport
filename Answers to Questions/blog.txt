@@ -1,0 +1,30 @@
+Tell it:
+
+Blog — build the full layout and structure, but seed it with static mock content for now. Don't build a full CMS admin panel. The client will likely connect a headless CMS later (Contentful, Sanity, or similar), so architect the blog with that in mind — data should come from a centralized source (even if it's a local JSON/mock file right now) so swapping in a CMS later is straightforward.
+Blog features to build:
+
+Blog listing page with a featured/hero post at the top and a grid of recent posts below
+Individual blog post page with rich content layout (headings, images, pull quotes)
+Category tags for filtering (e.g., Build Spotlights, Tech Tips, Product Announcements, Shop News, How-To Guides)
+Social share buttons on each post
+"Related Posts" section at the bottom of each post
+Don't build search for the blog — it's overkill at this stage
+
+Seed with 3-4 mock blog posts that feel like real shop content. For example:
+
+A build spotlight post ("1,000HP Challenger Hellcat Build — Full Breakdown")
+A tech tip / how-to post ("5 Signs Your Fuel System Can't Keep Up With Your Mods")
+A product announcement ("New Stage 2 Cam Packages Now Available")
+A shop news post ("Turnkey Motorsports Hits 500 Builds — Here's What We've Learned")
+
+FAQ — single page, but organized by topic with expandable accordion sections. Not separate FAQ pages per topic — just one page with clear category headings.
+FAQ categories:
+
+Engine Builds & Packages
+Parts Ordering & Compatibility
+Shipping & Delivery
+Installation Services
+Warranty & Returns
+Payment & Financing
+
+Seed with 3-4 questions per category (so roughly 18-24 total Q&As). Make them realistic — the kind of questions a real performance shop actually gets. Things like "Can I supply my own parts for installation?", "Do you offer financing on engine builds?", "How long does a typical Stage 2 build take?", "Do you ship internationally?"
