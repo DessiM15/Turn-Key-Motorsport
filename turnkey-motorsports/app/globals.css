@@ -8,9 +8,9 @@
   --color-surface-light: #1A1A1A;
   --color-border: #2A2A2A;
   --color-border-light: #333333;
-  --color-accent: #E63946;
-  --color-accent-hover: #FF4D5A;
-  --color-accent-muted: rgba(230, 57, 70, 0.15);
+  --color-accent: #00BFFF;
+  --color-accent-hover: #33CFFF;
+  --color-accent-muted: rgba(0, 191, 255, 0.15);
   --color-text-primary: #FFFFFF;
   --color-text-secondary: #A0A0A0;
   --color-text-tertiary: #666666;
@@ -60,7 +60,7 @@ body {
 
 /* Selection */
 ::selection {
-  background-color: rgba(230, 57, 70, 0.4);
+  background-color: rgba(0, 191, 255, 0.4);
   color: #FFFFFF;
 }
 
@@ -84,7 +84,7 @@ body {
 
 /* Focus visible for accessibility */
 *:focus-visible {
-  outline: 2px solid #E63946;
+  outline: 2px solid #00BFFF;
   outline-offset: 2px;
 }
 
@@ -94,7 +94,7 @@ body {
   top: -100%;
   left: 50%;
   transform: translateX(-50%);
-  background: #E63946;
+  background: #00BFFF;
   color: #FFFFFF;
   padding: 0.75rem 1.5rem;
   z-index: 100;
