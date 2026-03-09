@@ -18,7 +18,7 @@ import {
 
 export const metadata: Metadata = {
   title: 'My Account',
-  description: 'Manage your Turnkey Motorsports account — orders, saved vehicles, wishlist, and more.',
+  description: 'Manage your Turn-Key Motorsport account — orders, saved vehicles, wishlist, and more.',
 };
 
 const SIDEBAR_LINKS = [

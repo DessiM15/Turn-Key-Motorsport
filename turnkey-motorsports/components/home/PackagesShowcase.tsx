@@ -16,7 +16,7 @@ export default function PackagesShowcase() {
         <ScrollReveal>
           <SectionHeading
             title="Engine Packages"
-            subtitle="Turnkey builds from 500HP to 1000HP+. Parts, labor, and dyno tuning — all included."
+            subtitle="Turn-Key builds from 500HP to 1000HP+. Parts, labor, and dyno tuning — all included."
           />
         </ScrollReveal>
 

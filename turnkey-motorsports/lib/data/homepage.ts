@@ -203,7 +203,7 @@ export const HOMEPAGE_TESTIMONIALS: HomepageTestimonial[] = [
     vehicleMake: 'Dodge',
     vehicleModel: 'Challenger Hellcat',
     rating: 5,
-    text: 'Turnkey took my Hellcat from 717 to 950 wheel. The build quality is insane — every bolt torqued, every line routed clean. These guys don\'t cut corners.',
+    text: 'Turn-Key took my Hellcat from 717 to 950 wheel. The build quality is insane — every bolt torqued, every line routed clean. These guys don\'t cut corners.',
   },
   {
     id: 'test-2',
@@ -230,7 +230,7 @@ export const HOMEPAGE_TESTIMONIALS: HomepageTestimonial[] = [
     vehicleMake: 'Dodge',
     vehicleModel: 'Charger Scat Pack',
     rating: 5,
-    text: 'I was nervous trusting my car to a new shop, but Turnkey blew me away. They kept me updated through the whole build and the results speak for themselves.',
+    text: 'I was nervous trusting my car to a new shop, but Turn-Key blew me away. They kept me updated through the whole build and the results speak for themselves.',
   },
   {
     id: 'test-5',

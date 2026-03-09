@@ -18,7 +18,7 @@ import {
 export const metadata: Metadata = {
   title: 'Engine Packages',
   description:
-    'Turnkey engine build packages from 500HP to 1000HP+. Complete builds with parts, labor, and dyno tuning included.',
+    'Turn-Key engine build packages from 500HP to 1000HP+. Complete builds with parts, labor, and dyno tuning included.',
 };
 
 const TRUST_ITEMS = [
@@ -54,7 +54,7 @@ export default function PackagesPage() {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(230,57,70,0.08),transparent_60%)]" />
         <Container className="relative">
           <div className="mx-auto max-w-3xl text-center">
-            <Badge variant="accent" size="md">Turnkey Engine Packages</Badge>
+            <Badge variant="accent" size="md">Turn-Key Engine Packages</Badge>
             <h1 className="mt-4 font-display text-4xl font-bold uppercase tracking-wide text-white sm:text-5xl lg:text-6xl">
               Pick Your Power Level
             </h1>

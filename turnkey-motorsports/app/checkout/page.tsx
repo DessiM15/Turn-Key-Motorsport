@@ -5,7 +5,7 @@ import CheckoutForm from '@/components/shop/CheckoutForm';
 
 export const metadata: Metadata = {
   title: 'Checkout',
-  description: 'Complete your purchase at Turnkey Motorsports.',
+  description: 'Complete your purchase at Turn-Key Motorsport.',
 };
 
 export default function CheckoutPage() {

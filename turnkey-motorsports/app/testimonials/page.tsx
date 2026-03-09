@@ -10,7 +10,7 @@ import { cn } from '@/lib/utils';
 export const metadata: Metadata = {
   title: 'Testimonials',
   description:
-    'See what our customers say about Turnkey Motorsports. Real reviews from real builds.',
+    'See what our customers say about Turn-Key Motorsport. Real reviews from real builds.',
 };
 
 export default function TestimonialsPage() {
@@ -31,7 +31,7 @@ export default function TestimonialsPage() {
               Testimonials
             </h1>
             <p className="mt-4 text-lg text-text-secondary">
-              Real reviews from real customers. See why builders trust Turnkey Motorsports.
+              Real reviews from real customers. See why builders trust Turn-Key Motorsport.
             </p>
 
             {/* Average Rating */}

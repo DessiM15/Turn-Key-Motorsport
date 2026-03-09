@@ -1,7 +1,7 @@
 import type { EnginePackage } from '@/lib/types';
 
 // ============================================================
-// Turnkey Motorsports — Engine Package Data
+// Turn-Key Motorsport — Engine Package Data
 // 4 HP-tier packages
 // ============================================================
 

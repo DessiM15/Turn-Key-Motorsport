@@ -1,7 +1,7 @@
 import type { Build, BuildCategory } from '@/lib/types';
 
 // ============================================================
-// Turnkey Motorsports — Builds Gallery Data
+// Turn-Key Motorsport — Builds Gallery Data
 // 10 mock builds
 // ============================================================
 

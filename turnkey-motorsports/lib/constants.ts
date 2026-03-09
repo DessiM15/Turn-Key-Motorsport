@@ -9,17 +9,17 @@ import type {
 
 // --- Site Info ---
 
-export const SITE_NAME = 'Turnkey Motorsports';
+export const SITE_NAME = 'Turn-Key Motorsport';
 export const SITE_DESCRIPTION =
-  'Full engine builds, performance parts, and expert installation for all makes and models. Turnkey Motorsports delivers power you can trust.';
-export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://turnkey-motorsports.vercel.app';
+  'Full engine builds, performance parts, and expert installation for all makes and models. Turn-Key Motorsport delivers power you can trust.';
+export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://turn-key-motorsport.vercel.app';
 
 // --- Contact Info ---
 
 export const CONTACT_INFO: ContactInfo = {
   address: process.env.NEXT_PUBLIC_SHOP_ADDRESS ?? '123 Performance Drive, Anytown, USA',
   phone: process.env.NEXT_PUBLIC_CONTACT_PHONE ?? '(555) 123-4567',
-  email: process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? 'info@turnkeymotorsports.com',
+  email: process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? 'info@turnkeymotorsport.com',
   hours: [
     'Mon – Fri: 8:00 AM – 6:00 PM',
     'Saturday: 9:00 AM – 4:00 PM',
@@ -157,10 +157,10 @@ export const FOOTER_NAV: FooterGroup[] = [
 // --- Social Media ---
 
 export const SOCIAL_LINKS: SocialLink[] = [
-  { platform: 'Instagram', url: 'https://instagram.com/turnkeymotorsports', icon: 'instagram' },
-  { platform: 'Facebook', url: 'https://facebook.com/turnkeymotorsports', icon: 'facebook' },
-  { platform: 'YouTube', url: 'https://youtube.com/@turnkeymotorsports', icon: 'youtube' },
-  { platform: 'TikTok', url: 'https://tiktok.com/@turnkeymotorsports', icon: 'tiktok' },
+  { platform: 'Instagram', url: 'https://instagram.com/turnkeymotorsport', icon: 'instagram' },
+  { platform: 'Facebook', url: 'https://facebook.com/turnkeymotorsport', icon: 'facebook' },
+  { platform: 'YouTube', url: 'https://youtube.com/@turnkeymotorsport', icon: 'youtube' },
+  { platform: 'TikTok', url: 'https://tiktok.com/@turnkeymotorsport', icon: 'tiktok' },
 ];
 
 // --- Shop Categories (for filters) ---

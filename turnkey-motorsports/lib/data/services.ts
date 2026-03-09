@@ -1,7 +1,7 @@
 import type { Service } from '@/lib/types';
 
 // ============================================================
-// Turnkey Motorsports — Services Data
+// Turn-Key Motorsport — Services Data
 // 10 services matching SERVICE_NAMES in constants.ts
 // ============================================================
 

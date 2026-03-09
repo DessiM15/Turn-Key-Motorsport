@@ -1,5 +1,5 @@
 // ============================================================
-// Turnkey Motorsports — TypeScript Type Definitions
+// Turn-Key Motorsport — TypeScript Type Definitions
 // ============================================================
 
 // --- Enums & Union Types ---

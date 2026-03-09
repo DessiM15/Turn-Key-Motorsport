@@ -1,10 +1,10 @@
-# Turnkey Motorsports
+# Turn-Key Motorsport
 
 High-performance automotive e-commerce and service website built with Next.js, TypeScript, and Tailwind CSS.
 
 ## About
 
-Turnkey Motorsports is an automotive performance shop specializing in full engine builds, engine packages, and performance parts sales and installation. This website serves as their digital storefront — combining national e-commerce parts sales, service lead generation, and authority-building content.
+Turn-Key Motorsport is an automotive performance shop specializing in full engine builds, engine packages, and performance parts sales and installation. This website serves as their digital storefront — combining national e-commerce parts sales, service lead generation, and authority-building content.
 
 ## Tech Stack
 
@@ -24,7 +24,7 @@ Turnkey Motorsports is an automotive performance shop specializing in full engin
 
 ### Installation
 ```bash
-cd turnkey-motorsports
+cd turnkey-motorsports  # directory name unchanged
 npm install
 ```
 
@@ -77,7 +77,7 @@ npm start
 
 ## Project Structure
 ```
-turnkey-motorsports/
+turnkey-motorsports/  # Turn-Key Motorsport
 ├── app/                    # Next.js App Router pages
 │   ├── layout.tsx          # Root layout (header, footer, cart provider)
 │   ├── page.tsx            # Homepage with JSON-LD
@@ -149,4 +149,4 @@ All integration points are marked with `// TODO:` comments.
 
 ## License
 
-Private — Turnkey Motorsports.
+Private — Turn-Key Motorsport.

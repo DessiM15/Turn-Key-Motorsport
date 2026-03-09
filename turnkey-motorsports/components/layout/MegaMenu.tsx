@@ -71,7 +71,7 @@ export default function MegaMenu({ isOpen, onClose }: MegaMenuProps) {
             Engine Packages
           </h4>
           <p className="mt-2 text-sm text-text-secondary">
-            500HP to 1000HP+ builds. Turnkey solutions for serious power.
+            500HP to 1000HP+ builds. Turn-Key solutions for serious power.
           </p>
           <Link
             href="/packages"

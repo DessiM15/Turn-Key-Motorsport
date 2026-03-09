@@ -1,7 +1,7 @@
 import type { Testimonial } from '@/lib/types';
 
 // ============================================================
-// Turnkey Motorsports — Testimonials Data
+// Turn-Key Motorsport — Testimonials Data
 // 10 customer testimonials
 // ============================================================
 
@@ -11,7 +11,7 @@ const TESTIMONIALS: Testimonial[] = [
     customerName: 'Marcus D.',
     vehicle: { year: 2019, make: 'Dodge', model: 'Challenger Hellcat' },
     rating: 5,
-    text: 'Turnkey took my Hellcat from 717 to 950 wheel. The build quality is insane — every bolt torqued, every line routed clean. These guys don\'t cut corners. I daily drive this car and it has been flawless for 8,000 miles since the build.',
+    text: 'Turn-Key took my Hellcat from 717 to 950 wheel. The build quality is insane — every bolt torqued, every line routed clean. These guys don\'t cut corners. I daily drive this car and it has been flawless for 8,000 miles since the build.',
     date: '2025-11-15',
     serviceType: 'Engine Build',
   },
@@ -38,7 +38,7 @@ const TESTIMONIALS: Testimonial[] = [
     customerName: 'Sarah K.',
     vehicle: { year: 2022, make: 'Dodge', model: 'Charger Scat Pack' },
     rating: 5,
-    text: 'I was nervous trusting my car to a new shop, but Turnkey blew me away. They kept me updated through the whole build with photos and videos. The results speak for themselves — 640 WHP naturally aspirated on a 392. These guys are the real deal.',
+    text: 'I was nervous trusting my car to a new shop, but Turn-Key blew me away. They kept me updated through the whole build with photos and videos. The results speak for themselves — 640 WHP naturally aspirated on a 392. These guys are the real deal.',
     date: '2025-08-30',
     serviceType: 'Full Build',
   },
@@ -56,7 +56,7 @@ const TESTIMONIALS: Testimonial[] = [
     customerName: 'Devon P.',
     vehicle: { year: 2017, make: 'Ford', model: 'F-150 EcoBoost' },
     rating: 5,
-    text: 'Brought my truck in for a turbo upgrade and tune. They got it making 480 to the wheels — on a truck! The dyno numbers don\'t lie. Still tow my boat every weekend without issues. Turnkey understood what I wanted and delivered.',
+    text: 'Brought my truck in for a turbo upgrade and tune. They got it making 480 to the wheels — on a truck! The dyno numbers don\'t lie. Still tow my boat every weekend without issues. Turn-Key understood what I wanted and delivered.',
     date: '2025-06-12',
     serviceType: 'Turbo Upgrade',
   },
@@ -65,7 +65,7 @@ const TESTIMONIALS: Testimonial[] = [
     customerName: 'Anthony M.',
     vehicle: { year: 2013, make: 'Chevrolet', model: 'Camaro SS' },
     rating: 5,
-    text: 'Turnkey built my 9-second street car from the ground up. 1,100 WHP on a twin turbo LS and it still drives to shows. The build quality is race-shop level. I have run over 200 passes on this engine and it just keeps going.',
+    text: 'Turn-Key built my 9-second street car from the ground up. 1,100 WHP on a twin turbo LS and it still drives to shows. The build quality is race-shop level. I have run over 200 passes on this engine and it just keeps going.',
     date: '2025-05-08',
     serviceType: 'Drag Build',
   },
@@ -92,7 +92,7 @@ const TESTIMONIALS: Testimonial[] = [
     customerName: 'Tyler G.',
     vehicle: { year: 2016, make: 'Chevrolet', model: 'Silverado 1500' },
     rating: 4,
-    text: 'Twin turbo 5.3L — 650 WHP. The truck is an absolute rocket. Turnkey sourced the kit, did the install, and tuned it all in-house. The only reason for 4 stars is that the downpipe fitment needed some minor fab work. But the end result is absolutely incredible.',
+    text: 'Twin turbo 5.3L — 650 WHP. The truck is an absolute rocket. Turn-Key sourced the kit, did the install, and tuned it all in-house. The only reason for 4 stars is that the downpipe fitment needed some minor fab work. But the end result is absolutely incredible.',
     date: '2025-02-28',
     serviceType: 'Twin Turbo Install',
   },

@@ -13,8 +13,8 @@ export default function Footer() {
           <div className="lg:col-span-2">
             <Link href="/" className="inline-block">
               <span className="font-display text-xl font-bold uppercase tracking-[0.2em] text-white">
-                Turnkey
-                <span className="text-accent"> Motorsports</span>
+                Turn-Key
+                <span className="text-accent"> Motorsport</span>
               </span>
             </Link>
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-text-secondary">

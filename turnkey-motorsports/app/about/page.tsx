@@ -7,7 +7,7 @@ import { Wrench, Users, Award, Gauge, MapPin, ArrowRight, Eye } from 'lucide-rea
 
 export const metadata: Metadata = {
   title: 'About Us',
-  description: 'Learn about Turnkey Motorsports — our story, our team, and our commitment to building serious power.',
+  description: 'Learn about Turn-Key Motorsport — our story, our team, and our commitment to building serious power.',
 };
 
 const STATS = [
@@ -33,7 +33,7 @@ export default function AboutPage() {
           <div className="mx-auto max-w-3xl text-center">
             <Badge variant="accent" size="md">Our Story</Badge>
             <h1 className="mt-4 font-display text-4xl font-bold uppercase tracking-wide text-white sm:text-5xl lg:text-6xl">
-              About Turnkey Motorsports
+              About Turn-Key Motorsport
             </h1>
             <p className="mt-4 text-lg text-text-secondary">
               We build engines. We sell parts. We live and breathe horsepower. What started as a passion project in a two-car garage is now a full-service performance shop trusted by builders across the country.
@@ -50,7 +50,7 @@ export default function AboutPage() {
           </h2>
           <div className="mt-6 space-y-4 text-sm leading-relaxed text-text-secondary">
             <p>
-              Turnkey Motorsports was founded on a simple idea: build engines the right way and treat every customer&apos;s car like it&apos;s our own. We have been in the performance business for over 15 years, and in that time we have completed more than 500 engine builds ranging from mild street cars to four-digit drag machines.
+              Turn-Key Motorsport was founded on a simple idea: build engines the right way and treat every customer&apos;s car like it&apos;s our own. We have been in the performance business for over 15 years, and in that time we have completed more than 500 engine builds ranging from mild street cars to four-digit drag machines.
             </p>
             <p>
               Our shop is equipped with a chassis dyno, full machine shop capabilities, and a team of experienced builders who know these platforms inside and out. Whether you need a simple bolt-on install or a complete forged bottom-end build with forced induction, we have the tools and expertise to get it done right.

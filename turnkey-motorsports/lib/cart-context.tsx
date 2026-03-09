@@ -20,7 +20,7 @@ interface CartContextValue {
 
 const CartContext = createContext<CartContextValue | null>(null);
 
-const STORAGE_KEY = 'turnkey-cart';
+const STORAGE_KEY = 'turn-key-cart';
 
 function loadCart(): CartItem[] {
   if (typeof window === 'undefined') return [];

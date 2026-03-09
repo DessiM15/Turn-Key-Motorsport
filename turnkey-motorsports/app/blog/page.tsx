@@ -8,7 +8,7 @@ import { cn } from '@/lib/utils';
 
 export const metadata: Metadata = {
   title: 'Blog',
-  description: 'Build spotlights, tech tips, product announcements, and shop news from Turnkey Motorsports.',
+  description: 'Build spotlights, tech tips, product announcements, and shop news from Turn-Key Motorsport.',
 };
 
 const GRADIENT_MAP: Record<string, string> = {

@@ -53,8 +53,8 @@ export default function Header() {
           {/* Logo */}
           <Link href="/" className="shrink-0">
             <span className="font-display text-xl font-bold uppercase tracking-[0.2em] text-white lg:text-2xl">
-              Turnkey
-              <span className="text-accent"> Motorsports</span>
+              Turn-Key
+              <span className="text-accent"> Motorsport</span>
             </span>
           </Link>
 

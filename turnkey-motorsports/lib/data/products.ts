@@ -1,7 +1,7 @@
 import type { Product, ProductCategory } from '@/lib/types';
 
 // ============================================================
-// Turnkey Motorsports — Mock Product Catalog
+// Turn-Key Motorsport — Mock Product Catalog
 // 18 products across all categories
 // ============================================================
 
@@ -573,10 +573,10 @@ const PRODUCTS: Product[] = [
   // --- Apparel (3) ---
   {
     id: 'prod-015',
-    name: 'Turnkey Motorsports Logo Tee — Black',
-    slug: 'turnkey-logo-tee-black',
+    name: 'Turn-Key Motorsport Logo Tee — Black',
+    slug: 'turn-key-logo-tee-black',
     description:
-      'Premium cotton tee with the Turnkey Motorsports logo on the front chest and a large back print. Ringspun 100% cotton, pre-shrunk. Screen-printed graphics. Available in S–3XL.',
+      'Premium cotton tee with the Turn-Key Motorsport logo on the front chest and a large back print. Ringspun 100% cotton, pre-shrunk. Screen-printed graphics. Available in S–3XL.',
     shortDescription: 'Black logo tee — front chest logo + large back print.',
     price: 34,
     category: 'apparel',
@@ -606,10 +606,10 @@ const PRODUCTS: Product[] = [
   },
   {
     id: 'prod-016',
-    name: 'Turnkey Motorsports Snapback Hat',
-    slug: 'turnkey-snapback-hat',
+    name: 'Turn-Key Motorsport Snapback Hat',
+    slug: 'turn-key-snapback-hat',
     description:
-      'Structured snapback hat with embroidered Turnkey Motorsports logo. One-size-fits-most with adjustable snap closure. Flat brim. Black with red embroidery.',
+      'Structured snapback hat with embroidered Turn-Key Motorsport logo. One-size-fits-most with adjustable snap closure. Flat brim. Black with red embroidery.',
     shortDescription: 'Black snapback with red embroidered logo — one size fits most.',
     price: 29,
     category: 'apparel',
@@ -639,10 +639,10 @@ const PRODUCTS: Product[] = [
   },
   {
     id: 'prod-017',
-    name: 'Turnkey Motorsports Hoodie — Charcoal',
-    slug: 'turnkey-hoodie-charcoal',
+    name: 'Turn-Key Motorsport Hoodie — Charcoal',
+    slug: 'turn-key-hoodie-charcoal',
     description:
-      'Heavyweight pullover hoodie in charcoal with screen-printed Turnkey Motorsports graphics on front and back. 10 oz fleece, double-lined hood, rib knit cuffs and waistband. Kangaroo pocket. Available S–3XL.',
+      'Heavyweight pullover hoodie in charcoal with screen-printed Turn-Key Motorsport graphics on front and back. 10 oz fleece, double-lined hood, rib knit cuffs and waistband. Kangaroo pocket. Available S–3XL.',
     shortDescription: 'Charcoal heavyweight hoodie — screen-printed front & back.',
     price: 64,
     category: 'apparel',

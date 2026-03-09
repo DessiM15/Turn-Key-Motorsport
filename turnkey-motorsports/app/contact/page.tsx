@@ -7,7 +7,7 @@ import { Mail, Phone, MapPin, Clock } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Contact Us',
-  description: 'Get in touch with Turnkey Motorsports. Call, email, or visit our shop.',
+  description: 'Get in touch with Turn-Key Motorsport. Call, email, or visit our shop.',
 };
 
 export default function ContactPage() {
