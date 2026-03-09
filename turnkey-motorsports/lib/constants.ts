@@ -17,13 +17,12 @@ export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://turn-key-mo
 // --- Contact Info ---
 
 export const CONTACT_INFO: ContactInfo = {
-  address: process.env.NEXT_PUBLIC_SHOP_ADDRESS ?? '123 Performance Drive, Anytown, USA',
+  address: process.env.NEXT_PUBLIC_SHOP_ADDRESS ?? '18011 Cypress Rosehill Rd, Cypress, TX 77429',
   phone: process.env.NEXT_PUBLIC_CONTACT_PHONE ?? '(555) 123-4567',
   email: process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? 'info@turnkeymotorsport.com',
   hours: [
-    'Mon – Fri: 8:00 AM – 6:00 PM',
-    'Saturday: 9:00 AM – 4:00 PM',
-    'Sunday: Closed',
+    'Mon – Fri: 9:00 AM – 6:00 PM',
+    'Sat – Sun: Closed',
   ],
 };
 
