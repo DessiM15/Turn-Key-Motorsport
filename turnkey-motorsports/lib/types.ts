@@ -31,6 +31,8 @@ export type BlogCategory =
   | 'how-to-guides';
 
 export type FAQCategory =
+  | 'custom-fabrication'
+  | 'tuning-efi'
   | 'engine-builds'
   | 'parts-ordering'
   | 'shipping'
