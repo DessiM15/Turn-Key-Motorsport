@@ -25,3 +25,11 @@ Thumbs.db
 *.tsbuildinfo
 next-env.d.ts
 .vercel
+
+# project docs (local only)
+_BUILD/
+Client Meeting Questions/
+Logo/
+screenshots - gitignore/
+turnkey-motorsport-claude-code-prompt.md
+Answers to Questions/
