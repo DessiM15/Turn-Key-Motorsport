@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Container from '@/components/ui/Container';
 import SectionHeading from '@/components/ui/SectionHeading';
 import Badge from '@/components/ui/Badge';
-import BookingForm from '@/components/services/BookingForm';
+import Button from '@/components/ui/Button';
 import { getAllServices } from '@/lib/data/services';
 import { CONTACT_INFO } from '@/lib/constants';
 import {
@@ -106,23 +106,29 @@ export default function ServicesPage() {
       <section id="booking" className="scroll-mt-24 bg-surface-light py-16 lg:py-24">
         <Container>
           <SectionHeading
-            title="Book a Consultation"
-            subtitle="Tell us about your build and we will get back to you within 1 business day."
+            title="Ready to Start Your Build?"
+            subtitle="Schedule an appointment and we will get back to you within 1 business day to confirm."
           />
 
-          <BookingForm />
-
-          <div className="mt-12 flex flex-col items-center gap-2 text-center">
-            <p className="text-sm text-text-tertiary">
-              Prefer to talk? Call us directly:
-            </p>
-            <Link
-              href={`tel:${CONTACT_INFO.phone.replace(/[^\d+]/g, '')}`}
-              className="flex items-center gap-2 font-display text-lg font-bold text-accent transition-colors hover:text-accent-hover"
-            >
-              <Phone className="h-5 w-5" />
-              {CONTACT_INFO.phone}
+          <div className="mx-auto flex max-w-md flex-col items-center gap-4">
+            <Link href="/schedule">
+              <Button variant="primary" size="lg">
+                Schedule Your Appointment
+              </Button>
             </Link>
+
+            <div className="flex flex-col items-center gap-2 text-center">
+              <p className="text-sm text-text-tertiary">
+                Prefer to talk? Call us directly:
+              </p>
+              <Link
+                href={`tel:${CONTACT_INFO.phone.replace(/[^\d+]/g, '')}`}
+                className="flex items-center gap-2 font-display text-lg font-bold text-accent transition-colors hover:text-accent-hover"
+              >
+                <Phone className="h-5 w-5" />
+                {CONTACT_INFO.phone}
+              </Link>
+            </div>
           </div>
         </Container>
       </section>

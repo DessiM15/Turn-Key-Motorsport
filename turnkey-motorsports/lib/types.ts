@@ -202,6 +202,37 @@ export interface BookingRequest {
   preferredContact: 'call' | 'email';
 }
 
+// --- Appointment Scheduling ---
+
+export type AppointmentStatus =
+  | 'submitted'
+  | 'pending'
+  | 'confirmed'
+  | 'rescheduled'
+  | 'cancelled';
+
+export interface TimeSlot {
+  time: string;
+  available: boolean;
+}
+
+export interface AppointmentRequest {
+  name: string;
+  email: string;
+  phone: string;
+  preferredContact: 'call' | 'email' | 'text';
+  vehicleYear: string;
+  vehicleMake: string;
+  vehicleModel: string;
+  servicesRequested: string[];
+  projectDescription: string;
+  appointmentDate: string;
+  appointmentTime: string;
+  referenceNumber: string;
+  status: AppointmentStatus;
+  submittedAt: string;
+}
+
 // --- User Account (scaffolded) ---
 
 export interface SavedVehicle {

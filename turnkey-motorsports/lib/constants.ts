@@ -74,7 +74,7 @@ export const MAIN_NAV: NavItem[] = [
       { label: 'Engine Builds', href: '/services#engine-builds' },
       { label: 'Dyno Tuning', href: '/services#dyno-tuning' },
       { label: 'Installation', href: '/services#installation' },
-      { label: 'Book a Consultation', href: '/services#booking' },
+      { label: 'Schedule Appointment', href: '/schedule' },
     ],
   },
   {
@@ -197,6 +197,19 @@ export const SERVICE_NAMES = [
   'Suspension & Drivetrain Upgrades',
   'Pre-Purchase Inspections',
   'Maintenance for Modified Vehicles',
+] as const;
+
+// --- Appointment Time Slots ---
+
+export const AVAILABLE_TIME_SLOTS = [
+  '9:00 AM',
+  '10:00 AM',
+  '11:00 AM',
+  '1:00 PM',
+  '2:00 PM',
+  '3:00 PM',
+  '4:00 PM',
+  '5:00 PM',
 ] as const;
 
 // --- Build Categories ---
