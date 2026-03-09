@@ -1,5 +1,7 @@
 import { z } from 'zod';
 import type { NextRequest } from 'next/server';
+import { getAppointmentByRef, addAppointment } from '@/lib/data/appointments';
+import type { AppointmentRequest } from '@/lib/types';
 
 const BookingRequestSchema = z.object({
   name: z.string().min(1),
@@ -45,6 +47,27 @@ export async function POST(req: Request) {
     const data = parsed.data;
     const services = data.servicesRequested ?? data.servicesInterested ?? [];
 
+    // Add to mock data store so admin can see it
+    if (data.referenceNumber && data.appointmentDate && data.appointmentTime) {
+      const appointment: AppointmentRequest = {
+        name: data.name,
+        email: data.email,
+        phone: data.phone,
+        preferredContact: data.preferredContact,
+        vehicleYear: data.vehicleYear,
+        vehicleMake: data.vehicleMake,
+        vehicleModel: data.vehicleModel,
+        servicesRequested: services,
+        projectDescription: data.projectDescription ?? data.description ?? '',
+        appointmentDate: data.appointmentDate,
+        appointmentTime: data.appointmentTime,
+        referenceNumber: data.referenceNumber,
+        status: 'submitted',
+        submittedAt: data.submittedAt ?? new Date().toISOString(),
+      };
+      addAppointment(appointment);
+    }
+
     console.log('[POST /api/booking] Appointment request received:', {
       name: data.name,
       email: data.email,
@@ -77,13 +100,15 @@ export async function GET(req: NextRequest) {
     return Response.json({ error: 'Reference number is required' }, { status: 400 });
   }
 
-  // Mock: if ref starts with TKM-, return mock pending data
-  if (ref.startsWith('TKM-')) {
+  // Look up in mock data store
+  const appointment = getAppointmentByRef(ref.trim());
+
+  if (appointment) {
     return Response.json({
-      referenceNumber: ref,
-      status: 'pending',
-      appointmentDate: 'March 15, 2026',
-      appointmentTime: '10:00 AM',
+      referenceNumber: appointment.referenceNumber,
+      status: appointment.status,
+      appointmentDate: appointment.appointmentDate,
+      appointmentTime: appointment.appointmentTime,
     });
   }
 
