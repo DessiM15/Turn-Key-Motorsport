@@ -7,7 +7,7 @@ import { Wrench, Users, Award, Gauge, MapPin, ArrowRight, Eye } from 'lucide-rea
 
 export const metadata: Metadata = {
   title: 'About Us',
-  description: 'Learn about Turn-Key Motorsport — our story, our team, and our commitment to building serious power.',
+  description: 'Turn-Key Motorsport in Cypress, TX — your one-stop shop for custom fabrication, EFI tuning, and full engine builds on street cars and race cars.',
 };
 
 const STATS = [
@@ -18,10 +18,10 @@ const STATS = [
 ];
 
 const TEAM = [
-  { name: 'Shop Owner', role: 'Founder & Lead Builder', bio: 'Over 15 years of engine building experience across all domestic V8 platforms.' },
-  { name: 'Lead Technician', role: 'Senior Engine Builder', bio: 'Specializes in forced induction builds and custom fabrication.' },
-  { name: 'Tuning Specialist', role: 'Dyno & Calibration', bio: 'HP Tuners and EFI Live certified. Thousands of tunes across every platform.' },
-  { name: 'Service Advisor', role: 'Customer Relations', bio: 'Your point of contact from consultation to completion.' },
+  { name: 'Shop Owner', role: 'Founder & Lead Fabricator', bio: 'Custom fabrication, chassis builds, and engine work on American muscle — LS, Coyote, and HEMI.' },
+  { name: 'Lead Technician', role: 'Senior Engine Builder', bio: 'Specializes in forged builds, forced induction, and engine swaps for street and race applications.' },
+  { name: 'Tuning Specialist', role: 'EFI Calibrations & Dyno', bio: 'Custom EFI calibrations on HP Tuners, Holley, and FuelTech. Thousands of tunes across every platform.' },
+  { name: 'Service Advisor', role: 'Customer Relations', bio: 'Your point of contact from consultation to completion. Based in Cypress, TX.' },
 ];
 
 export default function AboutPage() {
@@ -36,7 +36,7 @@ export default function AboutPage() {
               About Turn-Key Motorsport
             </h1>
             <p className="mt-4 text-lg text-text-secondary">
-              We build engines. We sell parts. We live and breathe horsepower. What started as a passion project in a two-car garage is now a full-service performance shop trusted by builders across the country.
+              Your one-stop shop for street cars and race cars in Cypress, TX. Custom fabrication, EFI calibrations, and full engine builds — from bolt-ons to roll cages to four-digit horsepower.
             </p>
           </div>
         </Container>
@@ -46,17 +46,17 @@ export default function AboutPage() {
       <Container className="py-16 lg:py-24">
         <div className="mx-auto max-w-3xl">
           <h2 className="font-display text-2xl font-bold uppercase tracking-wide text-white">
-            Built by Enthusiasts, for Enthusiasts
+            One Shop. Every Build. Street to Strip.
           </h2>
           <div className="mt-6 space-y-4 text-sm leading-relaxed text-text-secondary">
             <p>
-              Turn-Key Motorsport was founded on a simple idea: build engines the right way and treat every customer&apos;s car like it&apos;s our own. We have been in the performance business for over 15 years, and in that time we have completed more than 500 engine builds ranging from mild street cars to four-digit drag machines.
+              Turn-Key Motorsport is a full-service performance and fabrication shop in Cypress, TX, built on a simple idea: be the one-stop shop for both street cars and race cars. Whether you are bolting on a cam package for your daily-driven Camaro or fabbing a chromoly roll cage for a 9-second drag car, everything happens under one roof — our roof.
             </p>
             <p>
-              Our shop is equipped with a chassis dyno, full machine shop capabilities, and a team of experienced builders who know these platforms inside and out. Whether you need a simple bolt-on install or a complete forged bottom-end build with forced induction, we have the tools and expertise to get it done right.
+              We specialize in custom fabrication (chassis mods, roll cages, custom 2-door chassis), EFI calibrations and dyno tuning, and complete engine builds on LS, Coyote, and HEMI platforms. Our shop is equipped with a chassis dyno, TIG welding stations, and a team that knows American muscle inside and out. From Mustangs to Challengers to classic Camaros — if it makes horsepower, we build it.
             </p>
             <p>
-              We are not a volume shop. We take a limited number of builds at a time so we can give each one the attention it deserves. Every build is documented, every torque spec is verified, and every car gets dyno-tuned before it leaves our shop. No shortcuts. No excuses.
+              We are not a volume shop. We take a limited number of builds at a time so we can give each one the attention it deserves. Every weld is inspected, every torque spec is verified, and every car gets tuned on the dyno before it leaves. No shortcuts. No excuses. That is the Turn-Key standard.
             </p>
           </div>
         </div>
@@ -102,7 +102,7 @@ export default function AboutPage() {
           <div className="grid gap-8 lg:grid-cols-2">
             <div>
               <h2 className="font-display text-2xl font-bold uppercase tracking-wide text-white">
-                Visit Our Shop
+                Visit Us in Cypress, TX
               </h2>
               <div className="mt-6 space-y-4 text-sm text-text-secondary">
                 <div className="flex items-start gap-3">
