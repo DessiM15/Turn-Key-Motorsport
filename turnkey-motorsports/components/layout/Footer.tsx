@@ -104,6 +104,22 @@ export default function Footer() {
             — Buy now, pay later with Affirm. Split your purchase into easy monthly payments.
           </p>
         </div>
+
+        {/* Legal Disclaimer */}
+        <div className="mt-8 border-t border-border pt-6">
+          <p className="text-xs leading-relaxed text-text-tertiary">
+            <span className="font-semibold text-text-secondary">Disclaimer:</span> Turn-Key
+            Motorsport provides performance modifications, custom fabrication, and tuning services
+            for off-road and competition use only. Modifications may affect vehicle emissions
+            compliance, manufacturer warranties, and street legality. Turn-Key Motorsport is not
+            responsible for any traffic citations, failed inspections, voided warranties, or legal
+            consequences resulting from modifications performed. By purchasing parts or services, the
+            customer acknowledges that modified vehicles may not comply with local, state, or federal
+            regulations and assumes all risk and liability associated with the use of modified
+            vehicles on public roads. All sales are final unless otherwise stated. A formal warranty
+            and liability policy is coming soon.
+          </p>
+        </div>
       </div>
 
       {/* Bottom Bar */}
