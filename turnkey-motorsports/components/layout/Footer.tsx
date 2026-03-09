@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { FOOTER_NAV, SOCIAL_LINKS, CONTACT_INFO, PAYMENT_METHODS, SITE_NAME } from '@/lib/constants';
 
 export default function Footer() {
@@ -12,10 +13,13 @@ export default function Footer() {
           {/* Brand Column */}
           <div className="lg:col-span-2">
             <Link href="/" className="inline-block">
-              <span className="font-display text-xl font-bold uppercase tracking-[0.2em] text-white">
-                Turn-Key
-                <span className="text-accent"> Motorsport</span>
-              </span>
+              <Image
+                src="/turnkey-logo-no-bg.png"
+                alt="Turn-Key Motorsport"
+                width={200}
+                height={80}
+                className="h-16 w-auto"
+              />
             </Link>
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-text-secondary">
               Full engine builds, performance parts, and expert installation for all

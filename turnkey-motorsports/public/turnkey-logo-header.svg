@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 120" width="520" height="120">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Oswald:ital,wght@1,700&amp;display=swap');
+      .title-main { font-family: 'Oswald', 'Arial Black', sans-serif; font-weight: 700; font-style: italic; }
+    </style>
+  </defs>
+  
+  <!-- "TURN-KEY" main text -->
+  <text x="260" y="55" text-anchor="middle" class="title-main" fill="#00BFFF" font-size="58" letter-spacing="3">TURN-KEY</text>
+  
+  <!-- Blue stripe -->
+  <rect x="10" y="62" width="500" height="6" fill="#00BFFF" rx="1"/>
+  <!-- Gray stripe -->
+  <rect x="10" y="70" width="500" height="5" fill="#808080" rx="1"/>
+  
+  <!-- "MOTORSPORT" -->
+  <text x="260" y="108" text-anchor="middle" class="title-main" fill="#FFFFFF" font-size="40" letter-spacing="4">MOTORSPORT</text>
+</svg>

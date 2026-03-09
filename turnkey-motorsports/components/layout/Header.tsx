@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Search, User, ShoppingCart, Menu, ChevronDown } from 'lucide-react';
 import { MAIN_NAV } from '@/lib/constants';
 import { cn } from '@/lib/utils';
@@ -52,10 +53,14 @@ export default function Header() {
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:h-20 lg:px-8">
           {/* Logo */}
           <Link href="/" className="shrink-0">
-            <span className="font-display text-xl font-bold uppercase tracking-[0.2em] text-white lg:text-2xl">
-              Turn-Key
-              <span className="text-accent"> Motorsport</span>
-            </span>
+            <Image
+              src="/turnkey-logo-header.svg"
+              alt="Turn-Key Motorsport"
+              width={200}
+              height={46}
+              priority
+              className="h-10 w-auto lg:h-12"
+            />
           </Link>
 
           {/* Desktop Navigation */}
