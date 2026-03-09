@@ -26,7 +26,7 @@ import type { LucideIcon } from 'lucide-react';
 export const metadata: Metadata = {
   title: 'Services',
   description:
-    'Engine builds, dyno tuning, installation, diagnostics, and more. Book a consultation today.',
+    'Custom fabrication, EFI calibrations, engine builds, and full-service performance work. Book a consultation today.',
 };
 
 const ICON_MAP: Record<string, LucideIcon> = {
@@ -49,7 +49,7 @@ export default function ServicesPage() {
     <>
       {/* Hero */}
       <section className="relative overflow-hidden bg-gradient-to-b from-accent/10 via-background to-background py-20 lg:py-28">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_20%,rgba(230,57,70,0.08),transparent_60%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_20%,rgba(0,191,255,0.08),transparent_60%)]" />
         <Container className="relative">
           <div className="mx-auto max-w-3xl text-center">
             <Badge variant="accent" size="md">Full-Service Performance Shop</Badge>
@@ -57,7 +57,7 @@ export default function ServicesPage() {
               Our Services
             </h1>
             <p className="mt-4 text-lg text-text-secondary">
-              From engine builds to dyno tuning, installation to diagnostics — we handle every aspect of your build under one roof.
+              Custom fabrication, EFI calibrations, engine builds, and everything in between — we handle every aspect of your build under one roof.
             </p>
           </div>
         </Container>

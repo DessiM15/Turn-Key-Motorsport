@@ -10,8 +10,8 @@ export default function HeroSection() {
     <section className="relative flex min-h-[calc(100vh-5rem)] items-center justify-center overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-neutral-950 via-background to-neutral-900" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(230,57,70,0.15)_0%,_transparent_50%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_rgba(230,57,70,0.08)_0%,_transparent_50%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(0,191,255,0.15)_0%,_transparent_50%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_rgba(0,191,255,0.08)_0%,_transparent_50%)]" />
 
       {/* Grid overlay for texture */}
       <div

@@ -51,7 +51,7 @@ export default function PackagesPage() {
     <>
       {/* Hero */}
       <section className="relative overflow-hidden bg-gradient-to-b from-accent/10 via-background to-background py-20 lg:py-28">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(230,57,70,0.08),transparent_60%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(0,191,255,0.08),transparent_60%)]" />
         <Container className="relative">
           <div className="mx-auto max-w-3xl text-center">
             <Badge variant="accent" size="md">Turn-Key Engine Packages</Badge>

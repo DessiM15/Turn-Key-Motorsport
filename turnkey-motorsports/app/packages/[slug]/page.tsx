@@ -49,7 +49,7 @@ export default async function PackageDetailPage({ params }: PackagePageProps) {
     <>
       {/* Hero */}
       <section className="relative overflow-hidden bg-gradient-to-b from-accent/10 via-background to-background py-16 lg:py-24">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(230,57,70,0.1),transparent_50%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(0,191,255,0.1),transparent_50%)]" />
         <Container className="relative">
           {/* Breadcrumb */}
           <nav aria-label="Breadcrumb" className="mb-8 flex items-center gap-2 text-sm text-text-tertiary">

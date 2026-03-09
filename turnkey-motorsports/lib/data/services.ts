@@ -7,6 +7,30 @@ import type { Service } from '@/lib/types';
 
 const SERVICES: Service[] = [
   {
+    id: 'svc-006',
+    name: 'Custom Fabrication',
+    slug: 'custom-fabrication',
+    description:
+      'Our flagship service. Chassis modifications, roll cages, custom 2-door chassis conversions, and ground-up fabrication for race and street builds. We also handle intercooler piping, turbo manifolds, exhaust systems, brackets, and one-off parts. TIG welding in stainless steel, mild steel, chromoly, and aluminum. If the catalogs do not sell it, we build it.',
+    shortDescription: 'Chassis mods, roll cages, custom 2-door chassis, and ground-up fabrication for any build.',
+    image: 'gradient-violet-dark',
+    icon: 'Flame',
+    timelineRange: '1–4 weeks',
+    priceRange: null,
+  },
+  {
+    id: 'svc-004',
+    name: 'Custom EFI Calibrations & Tuning',
+    slug: 'custom-efi-calibrations-tuning',
+    description:
+      'Custom EFI calibration and chassis dyno tuning for naturally aspirated and forced induction applications. We tune for pump gas, E85, race gas, and flex-fuel on all major platforms — HP Tuners, SCT, Holley, FuelTech, and more. Every tune includes before/after dyno pulls with printed data sheets. Remote tuning available for supported platforms.',
+    shortDescription: 'Custom EFI calibrations and dyno tuning — HP Tuners, Holley, FuelTech, and more.',
+    image: 'gradient-rose-dark',
+    icon: 'Gauge',
+    timelineRange: '4–8 hours',
+    priceRange: '$500 – $1,500',
+  },
+  {
     id: 'svc-001',
     name: 'Full Engine Builds',
     slug: 'full-engine-builds',
@@ -43,18 +67,6 @@ const SERVICES: Service[] = [
     priceRange: '$200 – $3,000+',
   },
   {
-    id: 'svc-004',
-    name: 'Dyno Tuning',
-    slug: 'dyno-tuning',
-    description:
-      'In-house chassis dyno tuning for naturally aspirated and forced induction applications. We tune for pump gas, E85, race gas, and flex-fuel. Every tune includes before/after dyno pulls with printed data sheets. Remote tuning available for supported platforms.',
-    shortDescription: 'Chassis dyno tuning for NA and FI applications — pump gas, E85, and flex-fuel.',
-    image: 'gradient-rose-dark',
-    icon: 'Gauge',
-    timelineRange: '4–8 hours',
-    priceRange: '$500 – $1,500',
-  },
-  {
     id: 'svc-005',
     name: 'Diagnostics & Troubleshooting',
     slug: 'diagnostics-troubleshooting',
@@ -65,18 +77,6 @@ const SERVICES: Service[] = [
     icon: 'Search',
     timelineRange: '2–4 hours',
     priceRange: '$150 – $500',
-  },
-  {
-    id: 'svc-006',
-    name: 'Custom Fabrication',
-    slug: 'custom-fabrication',
-    description:
-      'In-house TIG welding and fabrication for custom intercooler piping, turbo manifolds, exhaust systems, brackets, and one-off parts. Stainless steel, mild steel, and aluminum. We fabricate what the catalogs do not sell.',
-    shortDescription: 'TIG welding and custom fabrication — intercooler piping, manifolds, exhaust, brackets.',
-    image: 'gradient-violet-dark',
-    icon: 'Flame',
-    timelineRange: '1–5 days',
-    priceRange: null,
   },
   {
     id: 'svc-007',

@@ -190,12 +190,12 @@ export const VEHICLE_MAKES = [
 // --- Service Names ---
 
 export const SERVICE_NAMES = [
+  'Custom Fabrication',
+  'Custom EFI Calibrations & Tuning',
   'Full Engine Builds',
   'Engine Installation',
   'Performance Parts Installation',
-  'Dyno Tuning',
   'Diagnostics & Troubleshooting',
-  'Custom Fabrication',
   'Supercharger / Turbo Kit Installation',
   'Suspension & Drivetrain Upgrades',
   'Pre-Purchase Inspections',
