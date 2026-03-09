@@ -11,7 +11,7 @@ import type {
 
 export const SITE_NAME = 'Turn-Key Motorsport';
 export const SITE_DESCRIPTION =
-  'Full engine builds, performance parts, and expert installation for all makes and models. Turn-Key Motorsport delivers power you can trust.';
+  'Custom fabrication, EFI calibrations, and full engine builds for American muscle — LS, Coyote, and HEMI platforms. Turn-Key Motorsport delivers power you can trust.';
 export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://turn-key-motorsport.vercel.app';
 
 // --- Contact Info ---
@@ -108,12 +108,11 @@ export const MEGA_MENU_CATEGORIES: MegaMenuColumn = {
 };
 
 export const MEGA_MENU_VEHICLES: MegaMenuColumn = {
-  title: 'Shop by Vehicle',
+  title: 'Shop by Platform',
   items: [
-    { label: 'Dodge / Chrysler / Mopar', href: '/shop?make=dodge' },
-    { label: 'Ford / Mustang', href: '/shop?make=ford' },
-    { label: 'GM / Chevy / Camaro', href: '/shop?make=gm' },
-    { label: 'BMW', href: '/shop?make=bmw' },
+    { label: 'GM / LS / LT', href: '/shop?make=gm' },
+    { label: 'Ford / Coyote / Modular', href: '/shop?make=ford' },
+    { label: 'Dodge / HEMI / Mopar', href: '/shop?make=dodge' },
     { label: 'All Makes & Models', href: '/shop' },
   ],
 };
@@ -181,10 +180,8 @@ export const SHOP_CATEGORIES = [
 
 export const VEHICLE_MAKES = [
   'Dodge', 'Chrysler', 'Jeep', 'Ram',
-  'Ford', 'Chevrolet', 'GMC', 'Cadillac',
-  'BMW', 'Audi', 'Mercedes-Benz',
-  'Nissan', 'Toyota', 'Honda',
-  'Subaru', 'Mitsubishi',
+  'Ford', 'Lincoln', 'Chevrolet', 'GMC',
+  'Cadillac', 'Pontiac', 'Buick',
 ] as const;
 
 // --- Service Names ---

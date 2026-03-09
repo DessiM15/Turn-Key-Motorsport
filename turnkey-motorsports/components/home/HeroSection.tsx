@@ -31,7 +31,7 @@ export default function HeroSection() {
           transition={{ duration: 0.8, ease: 'easeOut' }}
         >
           <span className="inline-block rounded-full border border-accent/30 bg-accent/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-accent">
-            Performance Without Compromise
+            Custom Fabrication · EFI Tuning · Engine Builds
           </span>
         </motion.div>
 
@@ -41,8 +41,8 @@ export default function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.15, ease: 'easeOut' }}
         >
-          Built for{' '}
-          <span className="text-accent">Power</span>
+          American Muscle,{' '}
+          <span className="text-accent">Built Right</span>
         </motion.h1>
 
         <motion.p
@@ -51,9 +51,9 @@ export default function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3, ease: 'easeOut' }}
         >
-          Full engine builds, performance parts, and expert installation
-          for all makes and models. From bolt-ons to four-digit builds —
-          we deliver power you can trust.
+          Custom fabrication, EFI calibrations, and full engine builds
+          for Camaros, Mustangs, Challengers, and everything in between.
+          From roll cages to four-digit horsepower — we build it all.
         </motion.p>
 
         <motion.div

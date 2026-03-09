@@ -22,8 +22,8 @@ export default function Footer() {
               />
             </Link>
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-text-secondary">
-              Full engine builds, performance parts, and expert installation for all
-              makes and models. Delivering power you can trust since day one.
+              Custom fabrication, EFI calibrations, and full engine builds for
+              American muscle. LS, Coyote, and HEMI — built right, every time.
             </p>
 
             {/* Contact Info */}
