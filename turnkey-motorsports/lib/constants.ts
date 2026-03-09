@@ -157,7 +157,7 @@ export const FOOTER_NAV: FooterGroup[] = [
 
 export const SOCIAL_LINKS: SocialLink[] = [
   { platform: 'Instagram', url: 'https://instagram.com/turnkeymotorsport', icon: 'instagram' },
-  { platform: 'Facebook', url: 'https://facebook.com/turnkeymotorsport', icon: 'facebook' },
+  { platform: 'Facebook', url: 'https://m.facebook.com/61572503307370/', icon: 'facebook' },
   { platform: 'YouTube', url: 'https://youtube.com/@turnkeymotorsport', icon: 'youtube' },
   { platform: 'TikTok', url: 'https://tiktok.com/@turnkeymotorsport', icon: 'tiktok' },
 ];
