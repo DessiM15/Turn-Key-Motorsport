@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Oswald, Barlow } from 'next/font/google';
+import Script from 'next/script';
 import './globals.css';
 import AnnouncementBar from '@/components/layout/AnnouncementBar';
 import Header from '@/components/layout/Header';
@@ -7,6 +8,11 @@ import Footer from '@/components/layout/Footer';
 import CartDrawer from '@/components/shop/CartDrawer';
 import { CartProvider } from '@/lib/cart-context';
 import { SITE_NAME, SITE_DESCRIPTION, SITE_URL } from '@/lib/constants';
+
+const squareSdkUrl =
+  process.env.NEXT_PUBLIC_SQUARE_APP_ID?.startsWith('sandbox-')
+    ? 'https://sandbox.web.squarecdn.com/v1/square.js'
+    : 'https://web.squarecdn.com/v1/square.js';
 
 const oswald = Oswald({
   variable: '--font-oswald',
@@ -66,6 +72,7 @@ export default function RootLayout({
           <Footer />
           <CartDrawer />
         </CartProvider>
+        <Script src={squareSdkUrl} strategy="lazyOnload" />
       </body>
     </html>
   );

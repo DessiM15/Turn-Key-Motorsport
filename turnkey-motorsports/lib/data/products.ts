@@ -609,8 +609,8 @@ const PRODUCTS: Product[] = [
     name: 'Turn-Key Motorsport Snapback Hat',
     slug: 'turn-key-snapback-hat',
     description:
-      'Structured snapback hat with embroidered Turn-Key Motorsport logo. One-size-fits-most with adjustable snap closure. Flat brim. Black with red embroidery.',
-    shortDescription: 'Black snapback with red embroidered logo — one size fits most.',
+      'Structured snapback hat with embroidered Turn-Key Motorsport logo. One-size-fits-most with adjustable snap closure. Flat brim. Black with cyan embroidery.',
+    shortDescription: 'Black snapback with embroidered logo — one size fits most.',
     price: 29,
     category: 'apparel',
     subcategory: 'Hats',
@@ -620,7 +620,7 @@ const PRODUCTS: Product[] = [
       'Closure': 'Adjustable Snapback',
       'Brim': 'Flat Brim',
       'Embroidery': 'Front Logo + Side Flag',
-      'Color': 'Black / Red',
+      'Color': 'Black / Cyan',
     },
     fitment: [],
     reviews: [
@@ -672,43 +672,43 @@ const PRODUCTS: Product[] = [
     isNew: true,
   },
 
-  // --- Accessories (1) ---
+  // --- Engine Parts — Coyote (1) ---
   {
     id: 'prod-018',
-    name: 'Performance Spark Plug Set — LS (Set of 8)',
-    slug: 'performance-spark-plugs-ls-set-8',
+    name: 'Forged Rotating Assembly — Coyote 5.0',
+    slug: 'forged-rotating-assembly-coyote-50',
     description:
-      'Iridium-tipped performance spark plugs for LS-based engines. Pre-gapped to .040" for modified applications. Designed for high boost and nitrous applications with a colder heat range than stock. Set of 8.',
-    shortDescription: 'Iridium spark plugs for LS engines — colder heat range, set of 8.',
-    price: 79,
-    category: 'accessories',
-    subcategory: 'Spark Plugs',
+      'Complete forged bottom end kit for Ford Coyote 5.0L engines (2011-2023). Includes forged 4340 steel crankshaft, H-beam connecting rods, forged pistons with rings, and main/rod bearings. Built to handle 900+ HP with forced induction. Precision balanced and ready to drop into your Mustang GT or F-150.',
+    shortDescription: 'Forged crank, rods, and pistons for Coyote 5.0 — built for 900+ HP.',
+    price: 4199,
+    category: 'engine-parts',
+    subcategory: 'Rotating Assemblies',
     images: ['gradient-cyan-dark', 'gradient-cyan-mid', 'gradient-cyan-light'],
     specs: {
-      'Tip Material': 'Iridium',
-      'Heat Range': 'Colder (1 step)',
-      'Gap': '.040" (pre-gapped)',
-      'Quantity': 'Set of 8',
-      'Application': 'Boosted / Nitrous / Cammed LS',
+      'Crankshaft': '4340 Forged Steel, 3.650" Stroke',
+      'Connecting Rods': '4340 H-Beam, ARP 2000 bolts',
+      'Pistons': 'Forged Aluminum, -8cc dish',
+      'Compression Ratio': '9.0:1 (boost-friendly)',
+      'HP Rating': '900+ HP capable',
     },
     fitment: [
-      { make: 'Chevrolet', model: 'Camaro SS', yearStart: 2010, yearEnd: 2015 },
-      { make: 'Chevrolet', model: 'Corvette', yearStart: 2008, yearEnd: 2013 },
-      { make: 'Chevrolet', model: 'Silverado', yearStart: 2014, yearEnd: 2018 },
+      { make: 'Ford', model: 'Mustang GT', yearStart: 2011, yearEnd: 2023 },
+      { make: 'Ford', model: 'F-150', yearStart: 2011, yearEnd: 2023 },
     ],
     reviews: [
       {
         id: 'rev-022',
         customerName: 'Chris H.',
         rating: 5,
-        text: 'Running these with a cam and headers. No misfires, clean burn, and the colder heat range is exactly what a modded LS needs.',
+        text: 'Built my Gen 3 Coyote to 850 RWHP with a supercharger on this rotating assembly. Bulletproof quality and the balance is spot-on.',
         date: '2025-07-28',
         verified: true,
       },
     ],
-    relatedProductIds: ['prod-001', 'prod-008', 'prod-002'],
+    relatedProductIds: ['prod-005', 'prod-006', 'prod-009'],
     inStock: true,
     featured: false,
+    isNew: true,
   },
 ];
 

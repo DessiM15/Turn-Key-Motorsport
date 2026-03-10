@@ -1,12 +1,14 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import Link from 'next/link';
-import { ArrowLeft, Lock, Eye, CheckCircle } from 'lucide-react';
+import { ArrowLeft, Eye, CheckCircle } from 'lucide-react';
 import { z } from 'zod';
 import { useCart } from '@/lib/cart-context';
 import { cn, formatPrice } from '@/lib/utils';
 import Button from '@/components/ui/Button';
+import SquareCardForm from '@/components/shop/SquareCardForm';
+import type { SquareCardFormHandle } from '@/components/shop/SquareCardForm';
 
 const CheckoutSchema = z.object({
   email: z.string().email('Please enter a valid email address'),
@@ -38,6 +40,9 @@ export default function CheckoutForm() {
   const [errors, setErrors] = useState<Partial<Record<keyof CheckoutFormData, string>>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isComplete, setIsComplete] = useState(false);
+  const [orderNumber, setOrderNumber] = useState('');
+  const [paymentError, setPaymentError] = useState<string | undefined>(undefined);
+  const cardRef = useRef<SquareCardFormHandle>(null);
 
   const shippingEstimate = cartTotal >= 299 ? 0 : 14.99;
   const taxEstimate = cartTotal * 0.08;
@@ -56,7 +61,9 @@ export default function CheckoutForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setPaymentError(undefined);
 
+    // Step 1: Validate contact/shipping form
     const result = CheckoutSchema.safeParse(form);
     if (!result.success) {
       const fieldErrors: Partial<Record<keyof CheckoutFormData, string>> = {};
@@ -73,26 +80,54 @@ export default function CheckoutForm() {
     setErrors({});
     setIsSubmitting(true);
 
-    // TODO: Replace with real Shopify/Stripe checkout integration
     try {
-      const response = await fetch('/api/cart', {
+      // Step 2: Tokenize the card via Square SDK
+      if (!cardRef.current) {
+        setPaymentError('Payment form is not ready. Please wait a moment and try again.');
+        setIsSubmitting(false);
+        return;
+      }
+
+      let token: string;
+      try {
+        token = await cardRef.current.tokenize();
+      } catch (tokenError) {
+        const message = tokenError instanceof Error ? tokenError.message : 'Card processing failed.';
+        setPaymentError(message);
+        setIsSubmitting(false);
+        return;
+      }
+
+      // Step 3: Send to checkout API
+      const response = await fetch('/api/checkout', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
+          token,
           customer: result.data,
-          items,
-          total: orderTotal,
+          items: items.map((item) => ({
+            productId: item.productId,
+            name: item.name,
+            price: item.price,
+            quantity: item.quantity,
+          })),
         }),
       });
 
+      const data: unknown = await response.json();
+
       if (!response.ok) {
-        throw new Error('Order submission failed');
+        const errorData = data as { error?: string };
+        setPaymentError(errorData.error ?? 'Payment failed. Please try again.');
+        return;
       }
 
+      const successData = data as { orderNumber?: string };
+      setOrderNumber(successData.orderNumber ?? '');
       clearCart();
       setIsComplete(true);
     } catch {
-      setErrors({ email: 'Something went wrong. Please try again.' });
+      setPaymentError('Something went wrong. Please check your connection and try again.');
     } finally {
       setIsSubmitting(false);
     }
@@ -105,9 +140,13 @@ export default function CheckoutForm() {
         <h2 className="font-display text-3xl font-bold uppercase tracking-wide text-white">
           Order Confirmed
         </h2>
+        {orderNumber && (
+          <p className="mt-2 font-display text-lg font-semibold text-accent">
+            Order #{orderNumber}
+          </p>
+        )}
         <p className="mt-4 max-w-md text-sm text-text-secondary">
           Thank you for your order! You will receive a confirmation email shortly.
-          This is a demo — no real order was placed.
         </p>
         <Link
           href="/shop"
@@ -316,20 +355,16 @@ export default function CheckoutForm() {
           </div>
         </section>
 
-        {/* Payment (Placeholder) */}
+        {/* Payment — Square Card Form */}
         <section className="mb-10">
           <h2 className="mb-4 font-display text-lg font-bold uppercase tracking-wider text-white">
             Payment
           </h2>
-          <div className="rounded-xl border border-border bg-surface p-6 text-center">
-            <Lock className="mx-auto mb-3 h-8 w-8 text-text-tertiary" />
-            <p className="text-sm text-text-secondary">
-              Payment processing will be integrated with Shopify / Stripe.
-            </p>
-            <p className="mt-1 text-xs text-text-tertiary">
-              This is a demo — no real payment will be charged.
-            </p>
-          </div>
+          <SquareCardForm
+            ref={cardRef}
+            isProcessing={isSubmitting}
+            error={paymentError}
+          />
         </section>
 
         <Button

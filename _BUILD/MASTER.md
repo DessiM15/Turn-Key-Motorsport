@@ -16,6 +16,12 @@
 
 7. ✅ **Polish, Performance & Final QA** — Scroll animations audit, responsive QA (375/768/1440+), performance optimization (lazy loading, fonts, code splitting), SEO (meta tags, Open Graph, JSON-LD, sitemap), accessibility (ARIA, keyboard nav, focus states, contrast), cross-browser check, final design consistency pass, 404 page, README finalization.
 
+8. ✅ **Full Scheduling Page** — Date/time selection, confirmation workflow (14 files).
+
+9. ✅ **Admin Appointments Panel** — Password-protected admin panel for appointment management (16 files).
+
+10. ✅ **Square Web Payments Integration** — Real payment processing via Square SDK. Card form (iframe, PCI-safe), server-side payment API with Zod validation, error mapping, sandbox/production env var switch. (7 files: lib/square.ts, components/shop/SquareCardForm.tsx, app/api/checkout/route.ts, .env.example, CheckoutForm.tsx, layout.tsx, next.config.ts)
+
 ## Shared Dependencies
 
 ### Install Commands
