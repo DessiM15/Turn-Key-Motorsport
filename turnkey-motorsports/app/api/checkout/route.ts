@@ -73,7 +73,7 @@ export async function POST(request: Request) {
       note: `Turn-Key Motorsport order: ${orderNote}`,
     });
 
-    const paymentId = response.data.payment?.id ?? 'unknown';
+    const paymentId = response.payment?.id ?? 'unknown';
     const orderNumber = `TM-${paymentId.slice(-8).toUpperCase()}`;
 
     return NextResponse.json({
