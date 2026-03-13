@@ -57,7 +57,6 @@ const CARD_STYLE: SquareCardStyle = {
   input: {
     backgroundColor: 'transparent',
     color: '#FFFFFF',
-    fontFamily: 'Barlow, sans-serif',
     fontSize: '14px',
   },
   'input::placeholder': {
