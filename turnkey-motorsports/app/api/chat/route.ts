@@ -2,7 +2,16 @@ import { z } from 'zod';
 import Anthropic from '@anthropic-ai/sdk';
 import { KNOWLEDGE_BASE } from '@/lib/data/chat-knowledge-base';
 import { isDuringBusinessHours } from '@/lib/chat-utils';
-import type { LeadInfo } from '@/lib/types';
+import type { ChatMessage, LeadInfo } from '@/lib/types';
+import {
+  getSession,
+  createSession,
+  addMessageToSession,
+  updateSessionLead,
+  getNewMessages,
+  updateLastDelivered,
+  setSessionMode,
+} from '@/lib/data/chat-sessions';
 
 // --- Zod Schema ---
 
@@ -18,9 +27,12 @@ const ChatRequestSchema = z.object({
   lead: z.record(z.string(), z.string()).optional(),
 });
 
-// --- In-memory session tracking (v1) ---
+const PollSchema = z.object({
+  sessionId: z.string().min(1),
+  after: z.coerce.number().min(0),
+});
 
-const sessionTimestamps = new Map<string, { lastShopReply: number | null; startedAt: number }>();
+// --- Constants ---
 
 const SHOP_TIMEOUT_MS = 5 * 60 * 1000; // 5 minutes
 
@@ -104,27 +116,70 @@ function determineChatMode(sessionId: string): 'ai' | 'live' {
   const isBusinessHours = isDuringBusinessHours();
   if (!isBusinessHours) return 'ai';
 
-  // During business hours: check if shop has timed out
-  const session = sessionTimestamps.get(sessionId);
+  const session = getSession(sessionId);
   if (!session) {
-    // New session during business hours — start in live mode
-    sessionTimestamps.set(sessionId, { lastShopReply: null, startedAt: Date.now() });
+    // New session during business hours — will be created as live
     return 'live';
   }
 
+  // If AI has taken over manually, stay in AI mode
+  if (session.aiTakenOver) return 'ai';
+
   // If shop never replied and session started > 5 min ago, switch to AI
   const elapsed = Date.now() - session.startedAt;
-  if (session.lastShopReply === null && elapsed > SHOP_TIMEOUT_MS) {
+  if (session.lastShopReplyAt === null && elapsed > SHOP_TIMEOUT_MS) {
     return 'ai';
   }
 
   // If shop replied but it's been > 5 min since last reply, switch to AI
-  if (session.lastShopReply !== null) {
-    const sinceLastReply = Date.now() - session.lastShopReply;
+  if (session.lastShopReplyAt !== null) {
+    const sinceLastReply = Date.now() - session.lastShopReplyAt;
     if (sinceLastReply > SHOP_TIMEOUT_MS) return 'ai';
   }
 
   return 'live';
+}
+
+// --- GET handler (customer polling for new messages) ---
+
+export async function GET(req: Request) {
+  const url = new URL(req.url);
+  const parsed = PollSchema.safeParse({
+    sessionId: url.searchParams.get('sessionId'),
+    after: url.searchParams.get('after'),
+  });
+
+  if (!parsed.success) {
+    return Response.json(
+      { error: 'Invalid parameters', details: parsed.error.flatten() },
+      { status: 400 },
+    );
+  }
+
+  const { sessionId, after } = parsed.data;
+  const session = getSession(sessionId);
+
+  if (!session) {
+    return Response.json({ messages: [], mode: 'ai' });
+  }
+
+  const newMessages = getNewMessages(sessionId, after);
+  const currentMode = determineChatMode(sessionId);
+
+  // Update session mode if it changed (e.g., timeout kicked in)
+  if (session.mode !== currentMode) {
+    setSessionMode(sessionId, currentMode);
+  }
+
+  if (newMessages.length > 0) {
+    const latestTimestamp = newMessages[newMessages.length - 1].timestamp;
+    updateLastDelivered(sessionId, latestTimestamp);
+  }
+
+  return Response.json({
+    messages: newMessages,
+    mode: currentMode,
+  });
 }
 
 // --- POST handler ---
@@ -145,14 +200,52 @@ export async function POST(req: Request) {
     );
   }
 
-  const { sessionId, message, messages } = parsed.data;
+  const { sessionId, message, messages, lead } = parsed.data;
 
   try {
     const mode = determineChatMode(sessionId);
 
+    // Ensure session exists in the shared store
+    let session = getSession(sessionId);
+    if (!session) {
+      session = createSession(sessionId, mode);
+    }
+
+    // Update session mode
+    if (session.mode !== mode) {
+      setSessionMode(sessionId, mode);
+    }
+
+    // Store the user message
+    const userMessage: ChatMessage = {
+      id: crypto.randomUUID(),
+      role: 'user',
+      content: message,
+      timestamp: Date.now(),
+    };
+    addMessageToSession(sessionId, userMessage);
+
+    // Store lead data if provided
+    if (lead) {
+      const leadData = lead as Partial<LeadInfo>;
+      updateSessionLead(sessionId, leadData);
+    }
+
     if (mode === 'live') {
-      // Live mode — in v1, no shop-side UI exists, so we queue and wait
-      // The 5-minute timeout will auto-switch to AI on the next message
+      // Check if shop has queued any replies since the customer's last delivered message
+      const shopReplies = session.messages.filter(
+        (m) => m.role === 'assistant' && m.timestamp > session.lastDeliveredAt,
+      );
+
+      if (shopReplies.length > 0) {
+        const latestReply = shopReplies[shopReplies.length - 1];
+        updateLastDelivered(sessionId, latestReply.timestamp);
+        return Response.json({
+          reply: latestReply.content,
+          mode: 'live',
+        });
+      }
+
       return Response.json({
         reply: null,
         mode: 'live',
@@ -191,6 +284,20 @@ export async function POST(req: Request) {
 
     const rawReply = response.content[0]?.type === 'text' ? response.content[0].text : '';
     const { cleanText, leadData } = extractLeadData(rawReply);
+
+    // Store AI reply in the shared session
+    const assistantMessage: ChatMessage = {
+      id: crypto.randomUUID(),
+      role: 'assistant',
+      content: cleanText,
+      timestamp: Date.now(),
+    };
+    addMessageToSession(sessionId, assistantMessage);
+
+    // Store extracted lead
+    if (leadData) {
+      updateSessionLead(sessionId, leadData);
+    }
 
     return Response.json({
       reply: cleanText,

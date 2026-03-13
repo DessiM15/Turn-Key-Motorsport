@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
-import { ClipboardList, Package, LayoutDashboard, Menu, X } from 'lucide-react';
+import { ClipboardList, MessageCircle, Package, LayoutDashboard, Menu, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import Badge from '@/components/ui/Badge';
 
@@ -16,6 +16,7 @@ interface NavLink {
 
 const NAV_LINKS: NavLink[] = [
   { label: 'Appointments', href: '/admin/appointments', icon: ClipboardList },
+  { label: 'Live Chat', href: '/admin/chat', icon: MessageCircle },
   { label: 'Orders', href: '#', icon: Package, disabled: true },
   { label: 'Inventory', href: '#', icon: LayoutDashboard, disabled: true },
 ];

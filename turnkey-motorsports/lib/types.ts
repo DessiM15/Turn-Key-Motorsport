@@ -374,3 +374,15 @@ export interface ChatSession {
   lastShopReplyAt: number | null;
   isOpen: boolean;
 }
+
+export interface AdminChatSession {
+  id: string;
+  messages: ChatMessage[];
+  lead: Partial<LeadInfo>;
+  mode: ChatMode;
+  startedAt: number;
+  lastCustomerMessageAt: number;
+  lastShopReplyAt: number | null;
+  isActive: boolean;
+  aiTakenOver: boolean;
+}

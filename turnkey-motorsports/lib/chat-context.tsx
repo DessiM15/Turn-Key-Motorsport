@@ -93,6 +93,11 @@ export function ChatProvider({ children }: ChatProviderProps) {
   isOpenRef.current = isOpen;
 
   const lastSendRef = useRef(0);
+  const messagesRef = useRef(messages);
+  messagesRef.current = messages;
+
+  const modeRef = useRef(mode);
+  modeRef.current = mode;
 
   // Load session on mount
   useEffect(() => {
@@ -121,6 +126,66 @@ export function ChatProvider({ children }: ChatProviderProps) {
     }, 60_000);
     return () => clearInterval(interval);
   }, []);
+
+  // Poll for new messages when in live mode
+  useEffect(() => {
+    if (mode !== 'live') return;
+
+    const sessionId = getSessionId();
+    if (!sessionId) return;
+
+    const pollInterval = setInterval(async () => {
+      try {
+        // Use the latest message timestamp as the "after" parameter
+        const currentMessages = messagesRef.current;
+        const lastTimestamp = currentMessages.length > 0
+          ? currentMessages[currentMessages.length - 1].timestamp
+          : 0;
+
+        const res = await fetch(
+          `/api/chat?sessionId=${encodeURIComponent(sessionId)}&after=${lastTimestamp}`,
+        );
+
+        if (!res.ok) return;
+
+        const data = await res.json() as {
+          messages: ChatMessage[];
+          mode: ChatMode;
+        };
+
+        // If mode changed (e.g., AI takeover), update
+        if (data.mode && data.mode !== modeRef.current) {
+          setMode(data.mode);
+        }
+
+        // Append new messages (only assistant/system — we already have our own user messages)
+        if (data.messages && data.messages.length > 0) {
+          const newMessages = data.messages.filter(
+            (m) => m.role === 'assistant' || m.role === 'system',
+          );
+
+          if (newMessages.length > 0) {
+            setMessages((prev) => {
+              // Deduplicate by ID
+              const existingIds = new Set(prev.map((m) => m.id));
+              const fresh = newMessages.filter((m) => !existingIds.has(m.id));
+              if (fresh.length === 0) return prev;
+              return [...prev, ...fresh];
+            });
+
+            // Increment unread if chat is closed
+            if (!isOpenRef.current) {
+              setUnreadCount((prev) => prev + newMessages.length);
+            }
+          }
+        }
+      } catch {
+        // Polling failure — silently retry on next tick
+      }
+    }, 3000);
+
+    return () => clearInterval(pollInterval);
+  }, [mode]);
 
   // Persist session whenever messages/lead/mode change
   useEffect(() => {
