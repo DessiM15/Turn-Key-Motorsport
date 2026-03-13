@@ -1,8 +1,8 @@
 # BUILD STATE
 
-## Status: COMPLETE
-## Current Stage: VERIFIED
-## Current Feature: All features complete
+## Status: IN PROGRESS
+## Current Stage: VERIFY COMPLETE — Feature 11 Built
+## Current Feature: Feature 11 — Hybrid Chat Widget (COMPLETE)
 
 ## Completed:
 - ✅ Feature 1: Foundation & Layout Shell
@@ -16,45 +16,42 @@
 - ✅ Feature 8: Full Scheduling Page (14 files)
 - ✅ Feature 9: Admin Appointments Panel (16 files)
 - ✅ Feature 10: Square Web Payments Integration (7 files)
+- ✅ Square sandbox credentials configured and tested
+- ✅ Feature 11: Hybrid Chat Widget (11 files: 8 new, 3 modified)
+  - ✅ Knowledge base (lib/data/chat-knowledge-base.ts)
+  - ✅ Chat types added to lib/types.ts
+  - ✅ Business hours utility (lib/chat-utils.ts)
+  - ✅ Chat API route (app/api/chat/route.ts) — Claude Sonnet 4.6
+  - ✅ Chat context provider (lib/chat-context.tsx)
+  - ✅ ChatBubble, ChatMessage, ChatWindow, ChatWidget components
+  - ✅ Layout wired (app/layout.tsx)
+  - ✅ .env.example updated (both copies)
+  - ✅ @anthropic-ai/sdk installed
+  - ✅ next.config.ts — added @anthropic-ai/sdk to serverExternalPackages
+  - ✅ TypeScript: 0 errors
+  - ✅ Build: passes
+  - ✅ Verification: 15/15 checks passed
 
-## Feature 10 Build Summary:
-### Files created:
-- `lib/square.ts` — Server-side Square client (v44 API)
-- `components/shop/SquareCardForm.tsx` — Card input component (forwardRef + tokenize)
-- `app/api/checkout/route.ts` — Payment processing API (Zod, server-side total, error mapping)
-
-### Files modified:
-- `.env.example` — Square env vars added (replaced Stripe placeholders)
-- `components/shop/CheckoutForm.tsx` — Wired real payment flow, removed demo disclaimers
-- `app/layout.tsx` — Square Web Payments SDK script tag (sandbox/prod auto-detection)
-- `next.config.ts` — Added `serverExternalPackages: ['square']`
-
-### Verification:
-- ✅ TypeScript: 0 errors (npx tsc --noEmit)
-- ✅ Build: passes (only fails on Google Fonts fetch — network issue, not code)
-- ✅ Square SDK v44 compatibility (SquareClient, not Client)
-- ✅ Server-side total recalculation (never trusts client)
-- ✅ PCI compliant (card data never touches server — SDK iframe only)
-- ✅ Error mapping (Square error codes → friendly messages)
-- ✅ Form data preserved on payment failure
-- ✅ Sandbox/production = env var switch only
-
-### Note: Square SDK v44 API Changes
-- v44 uses `SquareClient` (not `Client`) and `SquareEnvironment` (not `Environment`)
-- Constructor: `new SquareClient({ token, environment })`
-- API: `client.payments.create(...)` (not `client.paymentsApi.createPayment(...)`)
-- No .d.ts files ship — manual type declarations in lib/square.ts
-
-## Remaining: None — awaiting owner's Square credentials to test live
+## Remaining:
+- ⬜ User needs to add ANTHROPIC_API_KEY to .env.local for live testing
+- ⬜ Commit Feature 11 changes
 
 ## Decisions Made:
 - Square over Stripe/Shopify (owner preference)
 - Option A: No database — orders live in Square Dashboard only
 - Cards only — no Apple Pay/Google Pay initially
-- Keep existing shipping/tax calculation
 - Sandbox-first, production = env var swap
 - `serverExternalPackages` needed for Square v44 + Next.js bundling
+- Chat widget: Claude Sonnet 4.6 for AI responses (fast, cost-effective)
+- Chat widget: REST API (no WebSockets/SSE for v1)
+- Chat widget: In-memory session storage server-side, sessionStorage client-side
+- Chat widget: AI handles all chats in v1 (live shop-side UI is future feature)
+- Chat widget: Knowledge base is server-side only, injected into Claude system prompt
+- Chat widget: `@anthropic-ai/sdk` added to serverExternalPackages
+- Chat widget: regex uses [\s\S] instead of `s` flag (target ES2017)
 
-## Blockers: None
+## Blockers:
+- User needs ANTHROPIC_API_KEY before chat widget can be tested live
+
 ## Context Docs: (none)
-## Last Updated: 2026-03-10
+## Last Updated: 2026-03-13

@@ -6,7 +6,9 @@ import AnnouncementBar from '@/components/layout/AnnouncementBar';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import CartDrawer from '@/components/shop/CartDrawer';
+import ChatWidget from '@/components/chat/ChatWidget';
 import { CartProvider } from '@/lib/cart-context';
+import { ChatProvider } from '@/lib/chat-context';
 import { SITE_NAME, SITE_DESCRIPTION, SITE_URL } from '@/lib/constants';
 
 const squareSdkUrl =
@@ -63,14 +65,17 @@ export default function RootLayout({
     <html lang="en" className={`${oswald.variable} ${barlow.variable}`}>
       <body className="min-h-screen bg-background font-body text-white antialiased">
         <CartProvider>
-          <a href="#main-content" className="skip-to-content">
-            Skip to content
-          </a>
-          <AnnouncementBar />
-          <Header />
-          <main id="main-content">{children}</main>
-          <Footer />
-          <CartDrawer />
+          <ChatProvider>
+            <a href="#main-content" className="skip-to-content">
+              Skip to content
+            </a>
+            <AnnouncementBar />
+            <Header />
+            <main id="main-content">{children}</main>
+            <Footer />
+            <CartDrawer />
+            <ChatWidget />
+          </ChatProvider>
         </CartProvider>
         <Script src={squareSdkUrl} strategy="lazyOnload" />
       </body>

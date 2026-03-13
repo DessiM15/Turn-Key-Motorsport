@@ -22,6 +22,8 @@
 
 10. ✅ **Square Web Payments Integration** — Real payment processing via Square SDK. Card form (iframe, PCI-safe), server-side payment API with Zod validation, error mapping, sandbox/production env var switch. (7 files: lib/square.ts, components/shop/SquareCardForm.tsx, app/api/checkout/route.ts, .env.example, CheckoutForm.tsx, layout.tsx, next.config.ts)
 
+11. ✅ **Hybrid Chat Widget** — AI-powered chat widget using Claude Sonnet 4.6. Knowledge base from services/FAQ data, business hours mode switching (live vs AI), lead capture, sessionStorage persistence. Floating bubble on all pages, full-screen on mobile, 360x500 window on desktop. (11 files: lib/data/chat-knowledge-base.ts, lib/types.ts, lib/chat-utils.ts, app/api/chat/route.ts, lib/chat-context.tsx, components/chat/ChatBubble.tsx, components/chat/ChatMessage.tsx, components/chat/ChatWindow.tsx, components/chat/ChatWidget.tsx, app/layout.tsx, .env.example)
+
 ## Shared Dependencies
 
 ### Install Commands

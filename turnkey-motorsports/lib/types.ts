@@ -343,3 +343,34 @@ export interface SocialLink {
   url: string;
   icon: string;
 }
+
+// --- Chat ---
+
+export type ChatMode = 'live' | 'ai' | 'handoff';
+
+export interface ChatMessage {
+  id: string;
+  role: 'user' | 'assistant' | 'system';
+  content: string;
+  timestamp: number;
+}
+
+export interface LeadInfo {
+  name: string;
+  phone: string;
+  email: string;
+  vehicleYear: string;
+  vehicleMake: string;
+  vehicleModel: string;
+  serviceInterest: string;
+}
+
+export interface ChatSession {
+  id: string;
+  mode: ChatMode;
+  messages: ChatMessage[];
+  lead: Partial<LeadInfo>;
+  startedAt: number;
+  lastShopReplyAt: number | null;
+  isOpen: boolean;
+}
