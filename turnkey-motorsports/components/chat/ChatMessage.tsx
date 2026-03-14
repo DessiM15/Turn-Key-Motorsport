@@ -48,6 +48,22 @@ function formatContent(text: string): React.ReactNode {
     const line = lines[i];
     const trimmed = line.trim();
 
+    // Strip horizontal rules
+    if (/^-{3,}$/.test(trimmed) || /^\*{3,}$/.test(trimmed)) {
+      flushList();
+      continue;
+    }
+
+    // Convert headers to bold text (strip # prefix)
+    const headerMatch = trimmed.match(/^#{1,4}\s+(.+)/);
+    if (headerMatch) {
+      flushList();
+      elements.push(
+        <p key={`h-${i}`} className="font-semibold">{renderInline(headerMatch[1])}</p>,
+      );
+      continue;
+    }
+
     // Unordered list item
     const ulMatch = trimmed.match(/^[-*]\s+(.+)/);
     if (ulMatch) {
