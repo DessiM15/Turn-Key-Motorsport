@@ -15,6 +15,90 @@ function formatTimestamp(ts: number): string {
   return new Date(ts).toLocaleDateString();
 }
 
+/**
+ * Renders simple markdown formatting for assistant messages:
+ * - **bold** → <strong>
+ * - Lines starting with - or * or numbered (1.) → list items
+ * - Newlines → proper breaks between paragraphs
+ */
+function formatContent(text: string): React.ReactNode {
+  const lines = text.split('\n');
+  const elements: React.ReactNode[] = [];
+  let listItems: string[] = [];
+  let listType: 'ul' | 'ol' | null = null;
+
+  const flushList = () => {
+    if (listItems.length === 0) return;
+    const Tag = listType === 'ol' ? 'ol' : 'ul';
+    const listClass = listType === 'ol'
+      ? 'list-decimal list-inside space-y-0.5 my-1'
+      : 'list-disc list-inside space-y-0.5 my-1';
+    elements.push(
+      <Tag key={`list-${elements.length}`} className={listClass}>
+        {listItems.map((item, i) => (
+          <li key={i}>{renderInline(item)}</li>
+        ))}
+      </Tag>,
+    );
+    listItems = [];
+    listType = null;
+  };
+
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i];
+    const trimmed = line.trim();
+
+    // Unordered list item
+    const ulMatch = trimmed.match(/^[-*]\s+(.+)/);
+    if (ulMatch) {
+      if (listType === 'ol') flushList();
+      listType = 'ul';
+      listItems.push(ulMatch[1]);
+      continue;
+    }
+
+    // Ordered list item
+    const olMatch = trimmed.match(/^\d+[.)]\s+(.+)/);
+    if (olMatch) {
+      if (listType === 'ul') flushList();
+      listType = 'ol';
+      listItems.push(olMatch[1]);
+      continue;
+    }
+
+    // Not a list item — flush any pending list
+    flushList();
+
+    // Empty line = spacing
+    if (!trimmed) {
+      if (elements.length > 0) {
+        elements.push(<div key={`br-${i}`} className="h-1.5" />);
+      }
+      continue;
+    }
+
+    // Regular paragraph
+    elements.push(
+      <p key={`p-${i}`}>{renderInline(trimmed)}</p>,
+    );
+  }
+
+  flushList();
+  return <>{elements}</>;
+}
+
+/** Renders inline formatting: **bold** */
+function renderInline(text: string): React.ReactNode {
+  const parts = text.split(/(\*\*[^*]+\*\*)/g);
+  return parts.map((part, i) => {
+    const boldMatch = part.match(/^\*\*(.+)\*\*$/);
+    if (boldMatch) {
+      return <strong key={i} className="font-semibold">{boldMatch[1]}</strong>;
+    }
+    return <span key={i}>{part}</span>;
+  });
+}
+
 export default function ChatMessage({ message }: ChatMessageProps) {
   if (message.role === 'system') {
     return (
@@ -40,7 +124,7 @@ export default function ChatMessage({ message }: ChatMessageProps) {
               : 'rounded-bl-sm bg-surface-light text-white',
           )}
         >
-          {message.content}
+          {isUser ? message.content : formatContent(message.content)}
         </div>
         <span
           className={cn(
