@@ -1,4 +1,5 @@
 import HeroSection from '@/components/home/HeroSection';
+import GarageBar from '@/components/garage/GarageBar';
 import CategoryGrid from '@/components/home/CategoryGrid';
 import FeaturedProducts from '@/components/home/FeaturedProducts';
 import PackagesShowcase from '@/components/home/PackagesShowcase';
@@ -39,6 +40,7 @@ export default function HomePage() {
     <>
       <JsonLd />
       <HeroSection />
+      <GarageBar />
       <CategoryGrid />
       <FeaturedProducts />
       <PackagesShowcase />

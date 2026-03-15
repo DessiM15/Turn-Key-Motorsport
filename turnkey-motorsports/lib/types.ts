@@ -54,6 +54,16 @@ export interface VehicleFitment {
   model: string;
   yearStart: number;
   yearEnd: number;
+  engine?: string;
+}
+
+export interface GarageVehicle {
+  id: string;
+  year: number;
+  make: string;
+  model: string;
+  engine: string;
+  nickname: string;
 }
 
 export interface Review {

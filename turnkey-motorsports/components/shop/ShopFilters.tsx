@@ -5,6 +5,7 @@ import { Filter, X, ChevronDown, ChevronUp } from 'lucide-react';
 import { SHOP_CATEGORIES } from '@/lib/constants';
 import { getAllMakes, getModelsForMake } from '@/lib/data/products';
 import { cn } from '@/lib/utils';
+import { useGarage } from '@/lib/garage-context';
 import type { ProductCategory } from '@/lib/types';
 
 interface ShopFiltersProps {
@@ -32,6 +33,8 @@ export default function ShopFilters({
   const [categoryOpen, setCategoryOpen] = useState(true);
   const [vehicleOpen, setVehicleOpen] = useState(true);
 
+  const { activeVehicle } = useGarage();
+
   const makes = getAllMakes();
   const models = selectedMake ? getModelsForMake(selectedMake) : [];
 
@@ -50,6 +53,16 @@ export default function ShopFilters({
 
   const filterContent = (
     <div className="space-y-6">
+      {/* Garage Vehicle Info */}
+      {activeVehicle && (
+        <div className="rounded-lg border border-accent/20 bg-accent/5 px-3 py-2">
+          <p className="text-xs font-medium text-accent">Garage Vehicle</p>
+          <p className="mt-0.5 text-xs text-text-secondary">
+            {activeVehicle.year} {activeVehicle.make} {activeVehicle.model}
+          </p>
+        </div>
+      )}
+
       {/* Clear Filters */}
       {hasActiveFilters && (
         <button

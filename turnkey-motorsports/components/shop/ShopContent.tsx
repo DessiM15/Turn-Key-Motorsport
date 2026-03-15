@@ -5,6 +5,7 @@ import { useSearchParams, useRouter } from 'next/navigation';
 import { Package } from 'lucide-react';
 import type { Product, ProductCategory } from '@/lib/types';
 import { getAllProducts } from '@/lib/data/products';
+import { useGarage } from '@/lib/garage-context';
 import ProductCard from './ProductCard';
 import ShopFilters from './ShopFilters';
 import ShopToolbar, { type SortOption } from './ShopToolbar';
@@ -34,6 +35,9 @@ export default function ShopContent() {
   const [sortBy, setSortBy] = useState<SortOption>(sortParam);
   const [layout, setLayout] = useState<'grid' | 'list'>('grid');
   const [currentPage, setCurrentPage] = useState(pageParam);
+  const [fitmentFilterOn, setFitmentFilterOn] = useState(false);
+
+  const { activeVehicle, checkFitment } = useGarage();
 
   const allProducts = useMemo(() => getAllProducts(), []);
 
@@ -65,8 +69,16 @@ export default function ShopContent() {
       );
     }
 
+    // Garage fitment filter
+    if (fitmentFilterOn && activeVehicle) {
+      results = results.filter((p) => {
+        const fit = checkFitment(p);
+        return fit === 'fits' || fit === 'universal';
+      });
+    }
+
     return results;
-  }, [allProducts, selectedCategories, selectedMake, selectedModel, saleParam]);
+  }, [allProducts, selectedCategories, selectedMake, selectedModel, saleParam, fitmentFilterOn, activeVehicle, checkFitment]);
 
   // Apply sorting
   const sortedProducts = useMemo(() => {
@@ -212,6 +224,26 @@ export default function ShopContent() {
 
         {/* Products */}
         <div className="flex-1">
+          {/* Fitment Toggle */}
+          {activeVehicle && (
+            <div className="mb-4 flex items-center gap-3">
+              <label className="flex cursor-pointer items-center gap-2">
+                <input
+                  type="checkbox"
+                  checked={fitmentFilterOn}
+                  onChange={(e) => setFitmentFilterOn(e.target.checked)}
+                  className="h-4 w-4 rounded border-border bg-surface text-accent focus:ring-accent focus:ring-offset-0"
+                />
+                <span className="text-sm text-text-secondary">
+                  Show only parts that fit
+                </span>
+              </label>
+              <span className="text-xs text-text-tertiary">
+                ({activeVehicle.year} {activeVehicle.make} {activeVehicle.model})
+              </span>
+            </div>
+          )}
+
           {/* Toolbar */}
           <div className="mb-6">
             <ShopToolbar

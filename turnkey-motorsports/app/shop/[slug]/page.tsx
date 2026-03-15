@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import Container from '@/components/ui/Container';
+import GarageBar from '@/components/garage/GarageBar';
 import ProductDetail from '@/components/shop/ProductDetail';
 import { getAllProducts, getProductBySlug, getRelatedProducts } from '@/lib/data/products';
 import { SITE_NAME } from '@/lib/constants';
@@ -41,6 +42,9 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
   return (
     <Container className="py-16 lg:py-24">
+      <div className="-mx-4 mb-8 sm:-mx-6">
+        <GarageBar />
+      </div>
       <ProductDetail product={product} relatedProducts={relatedProducts} />
     </Container>
   );

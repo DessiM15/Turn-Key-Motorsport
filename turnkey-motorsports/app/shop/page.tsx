@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import Container from '@/components/ui/Container';
 import SectionHeading from '@/components/ui/SectionHeading';
+import GarageBar from '@/components/garage/GarageBar';
 import ShopContent from '@/components/shop/ShopContent';
 import Skeleton from '@/components/ui/Skeleton';
 
@@ -42,6 +43,11 @@ export default function ShopPage() {
             </span>
           </Link>
         ))}
+      </div>
+
+      {/* Garage Bar */}
+      <div className="-mx-4 mb-8 sm:-mx-6">
+        <GarageBar />
       </div>
 
       {/* Shop Content (filters, toolbar, products, pagination) */}

@@ -3,15 +3,17 @@
 import { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Search, User, ShoppingCart, Menu, ChevronDown } from 'lucide-react';
+import { Search, User, ShoppingCart, Car, Menu, ChevronDown } from 'lucide-react';
 import { MAIN_NAV } from '@/lib/constants';
 import { cn } from '@/lib/utils';
 import { useCart } from '@/lib/cart-context';
+import { useGarage } from '@/lib/garage-context';
 import MegaMenu from './MegaMenu';
 import MobileNav from './MobileNav';
 
 export default function Header() {
   const { cartCount, openCart } = useCart();
+  const { vehicles, toggleGarage } = useGarage();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMegaMenuOpen, setIsMegaMenuOpen] = useState(false);
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
@@ -128,6 +130,20 @@ export default function Header() {
             >
               <User className="h-5 w-5" />
             </Link>
+
+            {/* Garage */}
+            <button
+              onClick={toggleGarage}
+              className="relative hidden rounded-lg p-2 text-text-secondary transition-colors hover:bg-surface hover:text-white lg:flex"
+              aria-label={`Garage with ${vehicles.length} vehicles`}
+            >
+              <Car className="h-5 w-5" />
+              {vehicles.length > 0 && (
+                <span className="absolute -right-0.5 -top-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-accent text-[10px] font-bold text-white">
+                  {vehicles.length}
+                </span>
+              )}
+            </button>
 
             {/* Cart */}
             <button

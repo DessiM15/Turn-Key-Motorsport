@@ -5,6 +5,7 @@ import { ShoppingCart, Eye } from 'lucide-react';
 import type { Product } from '@/lib/types';
 import { cn, formatPrice } from '@/lib/utils';
 import { useCart } from '@/lib/cart-context';
+import { useGarage } from '@/lib/garage-context';
 import Badge from '@/components/ui/Badge';
 
 interface ProductCardProps {
@@ -27,6 +28,8 @@ const GRADIENT_MAP: Record<string, string> = {
 
 export default function ProductCard({ product, layout = 'grid' }: ProductCardProps) {
   const { addItem, isInCart, openCart } = useCart();
+  const { checkFitment, activeVehicle } = useGarage();
+  const fitment = activeVehicle ? checkFitment(product) : null;
 
   const handleAddToCart = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -48,6 +51,12 @@ export default function ProductCard({ product, layout = 'grid' }: ProductCardPro
       : product.featured
         ? <Badge variant="warning">Popular</Badge>
         : null;
+
+  const fitmentBadge = fitment === 'fits'
+    ? <Badge variant="success" size="sm">Fits Your Vehicle</Badge>
+    : fitment === 'universal'
+      ? <Badge variant="neutral" size="sm">Universal Fit</Badge>
+      : null;
 
   const inCart = isInCart(product.id);
 
@@ -79,6 +88,10 @@ export default function ProductCard({ product, layout = 'grid' }: ProductCardPro
             <p className="mt-1 line-clamp-2 text-sm text-text-secondary">
               {product.shortDescription}
             </p>
+            {fitmentBadge && <div className="mt-1.5">{fitmentBadge}</div>}
+            {fitment === 'does-not-fit' && (
+              <p className="mt-1 text-xs text-warning">May not fit your vehicle</p>
+            )}
           </div>
           <div className="mt-3 flex items-center justify-between">
             <div className="flex items-center gap-2">
@@ -141,6 +154,10 @@ export default function ProductCard({ product, layout = 'grid' }: ProductCardPro
         <h3 className="font-display text-sm font-semibold uppercase tracking-wide text-white transition-colors group-hover:text-accent sm:text-base">
           {product.name}
         </h3>
+        {fitmentBadge && <div className="mt-1.5">{fitmentBadge}</div>}
+        {fitment === 'does-not-fit' && (
+          <p className="mt-1 text-xs text-warning">May not fit your vehicle</p>
+        )}
 
         <div className="mt-auto pt-3">
           <div className="flex items-center gap-2">

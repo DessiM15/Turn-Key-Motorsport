@@ -27,8 +27,9 @@ const PRODUCTS: Product[] = [
       'Fitment': 'LS3 / L99 (2008-2015 Camaro, Corvette)',
     },
     fitment: [
-      { make: 'Chevrolet', model: 'Camaro SS', yearStart: 2010, yearEnd: 2015 },
-      { make: 'Chevrolet', model: 'Corvette', yearStart: 2008, yearEnd: 2013 },
+      { make: 'Chevrolet', model: 'Camaro SS', yearStart: 2010, yearEnd: 2015, engine: 'LS3 6.2L' },
+      { make: 'Chevrolet', model: 'Camaro SS', yearStart: 2010, yearEnd: 2015, engine: 'L99 6.2L' },
+      { make: 'Chevrolet', model: 'Corvette', yearStart: 2008, yearEnd: 2013, engine: 'LS3 6.2L' },
     ],
     reviews: [
       {
@@ -72,9 +73,10 @@ const PRODUCTS: Product[] = [
       'HP Rating': '800+ HP capable',
     },
     fitment: [
-      { make: 'Chevrolet', model: 'Camaro SS', yearStart: 2010, yearEnd: 2015 },
-      { make: 'Chevrolet', model: 'Corvette', yearStart: 2008, yearEnd: 2013 },
-      { make: 'Chevrolet', model: 'Silverado', yearStart: 2014, yearEnd: 2018 },
+      { make: 'Chevrolet', model: 'Camaro SS', yearStart: 2010, yearEnd: 2015, engine: 'LS3 6.2L' },
+      { make: 'Chevrolet', model: 'Camaro SS', yearStart: 2010, yearEnd: 2015, engine: 'L99 6.2L' },
+      { make: 'Chevrolet', model: 'Corvette', yearStart: 2008, yearEnd: 2013, engine: 'LS3 6.2L' },
+      { make: 'Chevrolet', model: 'Silverado 1500', yearStart: 2014, yearEnd: 2018, engine: 'L86 6.2L' },
     ],
     reviews: [
       {
@@ -109,8 +111,8 @@ const PRODUCTS: Product[] = [
       'Sold As': 'Pair (2 heads)',
     },
     fitment: [
-      { make: 'Chevrolet', model: 'Camaro SS', yearStart: 2010, yearEnd: 2015 },
-      { make: 'Chevrolet', model: 'Corvette', yearStart: 2008, yearEnd: 2013 },
+      { make: 'Chevrolet', model: 'Camaro SS', yearStart: 2010, yearEnd: 2015, engine: 'LS3 6.2L' },
+      { make: 'Chevrolet', model: 'Corvette', yearStart: 2008, yearEnd: 2013, engine: 'LS3 6.2L' },
     ],
     reviews: [
       {
@@ -148,9 +150,8 @@ const PRODUCTS: Product[] = [
       'Fitment': '2009-2023 5.7L HEMI (Challenger, Charger, 300)',
     },
     fitment: [
-      { make: 'Dodge', model: 'Challenger', yearStart: 2009, yearEnd: 2023 },
-      { make: 'Dodge', model: 'Charger', yearStart: 2009, yearEnd: 2023 },
-      { make: 'Chrysler', model: '300', yearStart: 2009, yearEnd: 2023 },
+      { make: 'Dodge', model: 'Challenger R/T', yearStart: 2011, yearEnd: 2023, engine: '5.7L HEMI' },
+      { make: 'Dodge', model: 'Charger R/T', yearStart: 2011, yearEnd: 2023, engine: '5.7L HEMI' },
     ],
     reviews: [
       {
@@ -194,8 +195,9 @@ const PRODUCTS: Product[] = [
       'Fitment': '2011-2023 Ford Coyote 5.0L',
     },
     fitment: [
-      { make: 'Ford', model: 'Mustang GT', yearStart: 2011, yearEnd: 2023 },
-      { make: 'Ford', model: 'F-150', yearStart: 2011, yearEnd: 2023 },
+      { make: 'Ford', model: 'Mustang GT', yearStart: 2011, yearEnd: 2017, engine: 'Coyote 5.0L' },
+      { make: 'Ford', model: 'Mustang GT', yearStart: 2018, yearEnd: 2023, engine: 'Coyote 5.0L Gen 3' },
+      { make: 'Ford', model: 'F-150', yearStart: 2015, yearEnd: 2020, engine: 'Coyote 5.0L' },
     ],
     reviews: [
       {
@@ -232,7 +234,8 @@ const PRODUCTS: Product[] = [
       'Includes': 'Gaskets, hardware, O2 extensions',
     },
     fitment: [
-      { make: 'Ford', model: 'Mustang GT', yearStart: 2015, yearEnd: 2023 },
+      { make: 'Ford', model: 'Mustang GT', yearStart: 2015, yearEnd: 2017, engine: 'Coyote 5.0L' },
+      { make: 'Ford', model: 'Mustang GT', yearStart: 2018, yearEnd: 2023, engine: 'Coyote 5.0L Gen 3' },
     ],
     reviews: [
       {
@@ -276,8 +279,8 @@ const PRODUCTS: Product[] = [
       'Sound Level': 'Aggressive (no drone at cruise)',
     },
     fitment: [
-      { make: 'Dodge', model: 'Challenger Scat Pack', yearStart: 2015, yearEnd: 2023 },
-      { make: 'Dodge', model: 'Charger Scat Pack', yearStart: 2015, yearEnd: 2023 },
+      { make: 'Dodge', model: 'Challenger Scat Pack', yearStart: 2015, yearEnd: 2023, engine: '6.4L HEMI 392' },
+      { make: 'Dodge', model: 'Charger Scat Pack', yearStart: 2015, yearEnd: 2023, engine: '6.4L HEMI 392' },
     ],
     reviews: [
       {
@@ -316,9 +319,11 @@ const PRODUCTS: Product[] = [
       'Quantity': 'Set of 8 (flow-matched)',
     },
     fitment: [
-      { make: 'Chevrolet', model: 'Camaro SS', yearStart: 2010, yearEnd: 2015 },
-      { make: 'Chevrolet', model: 'Corvette', yearStart: 2008, yearEnd: 2013 },
-      { make: 'Chevrolet', model: 'Silverado', yearStart: 2014, yearEnd: 2018 },
+      { make: 'Chevrolet', model: 'Camaro SS', yearStart: 2010, yearEnd: 2015, engine: 'LS3 6.2L' },
+      { make: 'Chevrolet', model: 'Camaro SS', yearStart: 2010, yearEnd: 2015, engine: 'L99 6.2L' },
+      { make: 'Chevrolet', model: 'Corvette', yearStart: 2008, yearEnd: 2013, engine: 'LS3 6.2L' },
+      { make: 'Chevrolet', model: 'Silverado 1500', yearStart: 2014, yearEnd: 2018, engine: 'L86 6.2L' },
+      { make: 'Chevrolet', model: 'Silverado 1500', yearStart: 2014, yearEnd: 2018, engine: 'L83 5.3L' },
     ],
     reviews: [
       {
@@ -362,8 +367,8 @@ const PRODUCTS: Product[] = [
       'Includes': 'Billet fuel hat, pumps, wiring, hardware',
     },
     fitment: [
-      { make: 'Dodge', model: 'Challenger', yearStart: 2008, yearEnd: 2023 },
-      { make: 'Dodge', model: 'Charger', yearStart: 2008, yearEnd: 2023 },
+      { make: 'Dodge', model: 'Challenger', yearStart: 2011, yearEnd: 2023 },
+      { make: 'Dodge', model: 'Charger', yearStart: 2011, yearEnd: 2023 },
       { make: 'Chevrolet', model: 'Camaro', yearStart: 2010, yearEnd: 2023 },
     ],
     reviews: [
@@ -401,8 +406,8 @@ const PRODUCTS: Product[] = [
       'Tune Included': 'Yes — pre-loaded PCM calibration',
     },
     fitment: [
-      { make: 'Dodge', model: 'Challenger', yearStart: 2009, yearEnd: 2023 },
-      { make: 'Dodge', model: 'Charger', yearStart: 2009, yearEnd: 2023 },
+      { make: 'Dodge', model: 'Challenger R/T', yearStart: 2011, yearEnd: 2023, engine: '5.7L HEMI' },
+      { make: 'Dodge', model: 'Charger R/T', yearStart: 2011, yearEnd: 2023, engine: '5.7L HEMI' },
     ],
     reviews: [
       {
@@ -437,9 +442,10 @@ const PRODUCTS: Product[] = [
       'Tune Required': 'Yes — custom tune not included',
     },
     fitment: [
-      { make: 'Chevrolet', model: 'Silverado', yearStart: 2014, yearEnd: 2018 },
-      { make: 'GMC', model: 'Sierra', yearStart: 2014, yearEnd: 2018 },
-      { make: 'Chevrolet', model: 'Tahoe', yearStart: 2015, yearEnd: 2020 },
+      { make: 'Chevrolet', model: 'Silverado 1500', yearStart: 2014, yearEnd: 2018, engine: 'L83 5.3L' },
+      { make: 'Chevrolet', model: 'Silverado 1500', yearStart: 2014, yearEnd: 2018, engine: 'L86 6.2L' },
+      { make: 'GMC', model: 'Sierra 1500', yearStart: 2014, yearEnd: 2018, engine: 'L83 5.3L' },
+      { make: 'GMC', model: 'Sierra 1500', yearStart: 2014, yearEnd: 2018, engine: 'L86 6.2L' },
     ],
     reviews: [
       {
@@ -516,9 +522,8 @@ const PRODUCTS: Product[] = [
       'Includes': 'Pressure plate, discs, flywheel, alignment tool',
     },
     fitment: [
-      { make: 'Chevrolet', model: 'Camaro SS', yearStart: 2010, yearEnd: 2015 },
-      { make: 'Chevrolet', model: 'Corvette Z06', yearStart: 2006, yearEnd: 2013 },
-      { make: 'Dodge', model: 'Viper', yearStart: 2003, yearEnd: 2017 },
+      { make: 'Chevrolet', model: 'Camaro SS', yearStart: 2010, yearEnd: 2015, engine: 'LS3 6.2L' },
+      { make: 'Chevrolet', model: 'Camaro SS', yearStart: 2010, yearEnd: 2015, engine: 'L99 6.2L' },
     ],
     reviews: [
       {
@@ -553,7 +558,8 @@ const PRODUCTS: Product[] = [
       'Balance': 'Dyno-balanced to 0.1 oz-in',
     },
     fitment: [
-      { make: 'Chevrolet', model: 'Camaro SS', yearStart: 2010, yearEnd: 2015 },
+      { make: 'Chevrolet', model: 'Camaro SS', yearStart: 2010, yearEnd: 2015, engine: 'LS3 6.2L' },
+      { make: 'Chevrolet', model: 'Camaro SS', yearStart: 2010, yearEnd: 2015, engine: 'L99 6.2L' },
     ],
     reviews: [
       {
@@ -692,8 +698,9 @@ const PRODUCTS: Product[] = [
       'HP Rating': '900+ HP capable',
     },
     fitment: [
-      { make: 'Ford', model: 'Mustang GT', yearStart: 2011, yearEnd: 2023 },
-      { make: 'Ford', model: 'F-150', yearStart: 2011, yearEnd: 2023 },
+      { make: 'Ford', model: 'Mustang GT', yearStart: 2011, yearEnd: 2017, engine: 'Coyote 5.0L' },
+      { make: 'Ford', model: 'Mustang GT', yearStart: 2018, yearEnd: 2023, engine: 'Coyote 5.0L Gen 3' },
+      { make: 'Ford', model: 'F-150', yearStart: 2015, yearEnd: 2020, engine: 'Coyote 5.0L' },
     ],
     reviews: [
       {

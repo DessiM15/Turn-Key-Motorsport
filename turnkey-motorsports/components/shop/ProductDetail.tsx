@@ -16,6 +16,7 @@ import {
 import type { Product } from '@/lib/types';
 import { cn, formatPrice } from '@/lib/utils';
 import { useCart } from '@/lib/cart-context';
+import { useGarage } from '@/lib/garage-context';
 import Badge from '@/components/ui/Badge';
 import ProductCard from './ProductCard';
 
@@ -41,6 +42,8 @@ type Tab = 'description' | 'specs' | 'fitment' | 'reviews';
 
 export default function ProductDetail({ product, relatedProducts }: ProductDetailProps) {
   const { addItem, isInCart, openCart } = useCart();
+  const { checkFitment, activeVehicle } = useGarage();
+  const fitment = activeVehicle ? checkFitment(product) : null;
   const [quantity, setQuantity] = useState(1);
   const [activeTab, setActiveTab] = useState<Tab>('description');
   const [selectedImage, setSelectedImage] = useState(0);
@@ -86,6 +89,32 @@ export default function ProductDetail({ product, relatedProducts }: ProductDetai
         <ChevronRight className="h-3.5 w-3.5" />
         <span className="text-text-secondary">{product.name}</span>
       </nav>
+
+      {/* Fitment Banner */}
+      {fitment === 'fits' && activeVehicle && (
+        <div className="mb-6 flex items-center gap-2 rounded-xl border border-success/30 bg-success/10 px-4 py-3">
+          <Shield className="h-5 w-5 shrink-0 text-success" />
+          <p className="text-sm text-success">
+            This part fits your {activeVehicle.year} {activeVehicle.make} {activeVehicle.model}
+          </p>
+        </div>
+      )}
+      {fitment === 'does-not-fit' && activeVehicle && (
+        <div className="mb-6 flex items-center gap-2 rounded-xl border border-warning/30 bg-warning/10 px-4 py-3">
+          <Shield className="h-5 w-5 shrink-0 text-warning" />
+          <p className="text-sm text-warning">
+            This part may not fit your {activeVehicle.year} {activeVehicle.make} {activeVehicle.model}. Check the fitment tab below.
+          </p>
+        </div>
+      )}
+      {fitment === 'universal' && (
+        <div className="mb-6 flex items-center gap-2 rounded-xl border border-border bg-surface-light px-4 py-3">
+          <Shield className="h-5 w-5 shrink-0 text-text-secondary" />
+          <p className="text-sm text-text-secondary">
+            Universal fit — compatible with all vehicles
+          </p>
+        </div>
+      )}
 
       {/* Product Top Section */}
       <div className="grid gap-8 lg:grid-cols-2 lg:gap-12">
@@ -312,20 +341,29 @@ export default function ProductDetail({ product, relatedProducts }: ProductDetai
                       </tr>
                     </thead>
                     <tbody>
-                      {product.fitment.map((f, idx) => (
-                        <tr
-                          key={`${f.make}-${f.model}-${idx}`}
-                          className={cn(
-                            idx % 2 === 0 ? 'bg-surface-light' : 'bg-surface'
-                          )}
-                        >
-                          <td className="px-4 py-3 text-text-secondary">{f.make}</td>
-                          <td className="px-4 py-3 text-text-secondary">{f.model}</td>
-                          <td className="px-4 py-3 text-text-secondary">
-                            {f.yearStart}–{f.yearEnd}
-                          </td>
-                        </tr>
-                      ))}
+                      {product.fitment.map((f, idx) => {
+                        const isMatch = activeVehicle
+                          && f.make === activeVehicle.make
+                          && activeVehicle.model.startsWith(f.model)
+                          && activeVehicle.year >= f.yearStart
+                          && activeVehicle.year <= f.yearEnd;
+
+                        return (
+                          <tr
+                            key={`${f.make}-${f.model}-${idx}`}
+                            className={cn(
+                              idx % 2 === 0 ? 'bg-surface-light' : 'bg-surface',
+                              isMatch && 'border-l-2 border-l-success',
+                            )}
+                          >
+                            <td className={cn('px-4 py-3', isMatch ? 'text-success' : 'text-text-secondary')}>{f.make}</td>
+                            <td className={cn('px-4 py-3', isMatch ? 'text-success' : 'text-text-secondary')}>{f.model}</td>
+                            <td className={cn('px-4 py-3', isMatch ? 'text-success' : 'text-text-secondary')}>
+                              {f.yearStart}–{f.yearEnd}
+                            </td>
+                          </tr>
+                        );
+                      })}
                     </tbody>
                   </table>
                 </div>
