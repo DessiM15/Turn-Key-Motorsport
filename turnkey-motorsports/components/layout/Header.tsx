@@ -133,13 +133,11 @@ export default function Header() {
             {/* Search */}
             <button
               onClick={() => setIsSearchOpen(true)}
-              className="hidden items-center gap-2 rounded-lg p-2 text-text-secondary transition-colors hover:bg-surface hover:text-white lg:flex"
+              className="hidden items-center gap-2 rounded-lg border border-border bg-surface/50 px-3 py-1.5 text-text-tertiary transition-colors hover:border-border-light hover:text-white lg:flex"
               aria-label="Search"
             >
-              <Search className="h-5 w-5" />
-              <kbd className="rounded border border-border bg-surface/50 px-1.5 py-0.5 text-[10px] font-medium text-text-tertiary">
-                Ctrl K
-              </kbd>
+              <Search className="h-4 w-4" />
+              <span className="text-xs">Search...</span>
             </button>
 
             {/* Account / Sign In */}
