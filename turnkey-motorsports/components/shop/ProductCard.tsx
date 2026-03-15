@@ -7,6 +7,7 @@ import { cn, formatPrice } from '@/lib/utils';
 import { useCart } from '@/lib/cart-context';
 import { useGarage } from '@/lib/garage-context';
 import Badge from '@/components/ui/Badge';
+import WishlistButton from '@/components/shop/WishlistButton';
 
 interface ProductCardProps {
   product: Product;
@@ -74,6 +75,9 @@ export default function ProductCard({ product, layout = 'grid' }: ProductCardPro
           {productBadge && (
             <div className="absolute left-2 top-2">{productBadge}</div>
           )}
+          <div className="absolute right-2 top-2">
+            <WishlistButton productId={product.id} size="sm" />
+          </div>
         </div>
 
         {/* Info */}
@@ -137,6 +141,9 @@ export default function ProductCard({ product, layout = 'grid' }: ProductCardPro
         {productBadge && (
           <div className="absolute left-3 top-3">{productBadge}</div>
         )}
+        <div className="absolute right-3 top-3 opacity-0 transition-opacity duration-200 group-hover:opacity-100">
+          <WishlistButton productId={product.id} size="sm" />
+        </div>
         {!product.inStock && (
           <div className="absolute inset-0 flex items-center justify-center bg-black/60">
             <span className="font-display text-sm font-bold uppercase tracking-wider text-white">

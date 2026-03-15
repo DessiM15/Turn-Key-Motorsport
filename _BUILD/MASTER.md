@@ -24,6 +24,17 @@
 
 11. ✅ **Hybrid Chat Widget** — AI-powered chat widget using Claude Sonnet 4.6. Knowledge base from services/FAQ data, business hours mode switching (live vs AI), lead capture, sessionStorage persistence. Floating bubble on all pages, full-screen on mobile, 360x500 window on desktop. (11 files: lib/data/chat-knowledge-base.ts, lib/types.ts, lib/chat-utils.ts, app/api/chat/route.ts, lib/chat-context.tsx, components/chat/ChatBubble.tsx, components/chat/ChatMessage.tsx, components/chat/ChatWindow.tsx, components/chat/ChatWidget.tsx, app/layout.tsx, .env.example)
 
+12. ✅ **Shop-Side Live Chat Admin UI** — Admin panel for live customer chat management (12 files).
+
+13. ✅ **Vehicle Garage & Fitment Tool** — Year/Make/Model/Engine selector, fitment badges, GarageBar, localStorage persistence (16 files).
+
+14. ⬜ **Soft Account System & Dashboard** — Soft account creation prompts + full account dashboard. 5 sub-features:
+    - 14a. ✅ **Auth Foundation** — AuthProvider, data service layer (localStorage demo / Supabase-ready), login/signup forms, AuthModal, standalone pages, layout + header integration (10 files)
+    - 14b. ✅ **Wishlist System** — WishlistProvider, heart button on product cards + detail pages, localStorage persistence (5 files)
+    - 14c. ✅ **Soft Account Prompts** — Toast after vehicle save, inline banners on checkout + appointment confirmation, modal on wishlist when logged out, prompt dismissal tracking (7 files)
+    - 14d. ✅ **Account Dashboard** — Full rewrite with auth gate, sidebar, 6 tabs: Profile, Orders, Vehicles, Wishlist, Addresses, Settings (8 files)
+    - 14e. ✅ **Integration & Polish** — Mobile nav auth links, garage-to-account sync, address save from checkout, localStorage merge on login (4 files)
+
 ## Shared Dependencies
 
 ### Install Commands

@@ -4,26 +4,37 @@
 Read CLAUDE.md, then cat _BUILD/BUILD-STATE.md to resume.
 
 ## What Was Happening
-Feature 11 (Hybrid Chat Widget) is fully built and verified. All 11 files created/modified, TypeScript compiles clean, production build passes, 15/15 verification checks passed.
+Feature 12 (Shop-Side Live Chat Admin UI) was built and verified — 15/15 checks passed. All 12 features are now complete.
 
 ## What's Done
-- All 11 features complete and building successfully
-- Feature 11 files: knowledge base, types, utils, API route, context provider, 4 UI components, layout wiring, env updates
-- @anthropic-ai/sdk installed, added to serverExternalPackages
-- No API key leaks in client bundles
+- Features 1–12: All complete and verified
+- Feature 12 files (7 new, 5 modified):
+  - `lib/data/chat-sessions.ts` — shared in-memory chat session store
+  - `lib/types.ts` — added AdminChatSession interface
+  - `app/api/chat/route.ts` — refactored to use shared store + added GET handler for customer polling
+  - `lib/chat-context.tsx` — added live mode polling (3s interval)
+  - `app/api/admin/chat/route.ts` — GET active sessions
+  - `app/api/admin/chat/[sessionId]/route.ts` — GET session + POST reply
+  - `app/api/admin/chat/[sessionId]/takeover/route.ts` — POST AI takeover
+  - `components/admin/ChatSessionList.tsx` — session list with mode badges
+  - `components/admin/ChatConversation.tsx` — conversation view with lead info + reply input
+  - `components/admin/AdminChatPanel.tsx` — split layout with polling
+  - `app/admin/chat/page.tsx` — admin chat page
+  - `components/admin/AdminSidebar.tsx` — added Live Chat nav link
 
 ## What's Next
-- User needs to add their `ANTHROPIC_API_KEY` to `.env.local` to enable live chat testing
-- Commit all Feature 11 changes when ready
-- All planned features are now complete
+- Feature 12 code is ready to commit
+- User may want to test live (needs ANTHROPIC_API_KEY in .env.local)
+- No additional features are planned
 
 ## Open Questions
-- User needs to provide their Anthropic API key
-- Live/interactive testing requires running dev server with the key configured
+- None
 
 ## Watch Out For
-- Square SDK fontFamily issue: already fixed (commit e5c9443)
-- Square sandbox only accepts Visa test card 4111 1111 1111 1111
-- Dev server needs `NODE_OPTIONS="--max-old-space-size=4096"`
+- Square SDK fontFamily issue: already fixed (commit e5c9443) — don't re-add fontFamily to card styles
+- Square sandbox only accepts Visa test card `4111 1111 1111 1111`
+- Dev server needs `NODE_OPTIONS="--max-old-space-size=4096"` to avoid heap OOM
 - tsconfig target is ES2017 — use `[\s\S]` instead of regex `s` flag
-- Tailwind v4 uses CSS-based @theme config in globals.css, no tailwind.config.ts
+- Tailwind v4 uses CSS-based `@theme` config in `globals.css`, NO `tailwind.config.ts`
+- Project lives at `turnkey-motorsports/` subdirectory, not workspace root
+- `_BUILD/` directory is gitignored — build state files are local only

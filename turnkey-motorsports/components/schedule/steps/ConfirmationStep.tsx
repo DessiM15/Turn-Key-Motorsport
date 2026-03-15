@@ -4,12 +4,15 @@ import Link from 'next/link';
 import { CheckCircle, Calendar, Clock } from 'lucide-react';
 import Badge from '@/components/ui/Badge';
 import Button from '@/components/ui/Button';
+import AccountBanner from '@/components/prompts/AccountBanner';
 
 interface ConfirmationStepProps {
   referenceNumber: string;
   appointmentDate: string;
   appointmentTime: string;
   name: string;
+  email?: string;
+  phone?: string;
   onScheduleAnother: () => void;
 }
 
@@ -29,6 +32,8 @@ export default function ConfirmationStep({
   appointmentDate,
   appointmentTime,
   name,
+  email,
+  phone,
   onScheduleAnother,
 }: ConfirmationStepProps) {
   return (
@@ -85,6 +90,17 @@ export default function ConfirmationStep({
             Back to Services
           </Button>
         </Link>
+      </div>
+
+      <div className="mt-4 w-full max-w-md">
+        <AccountBanner
+          promptId="appointment-account"
+          heading="Create an account to check your appointment status"
+          description="Track your appointment anytime without needing your reference number."
+          prefillName={name}
+          prefillEmail={email}
+          prefillPhone={phone}
+        />
       </div>
     </div>
   );

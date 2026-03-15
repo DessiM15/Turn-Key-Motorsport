@@ -18,6 +18,7 @@ import { cn, formatPrice } from '@/lib/utils';
 import { useCart } from '@/lib/cart-context';
 import { useGarage } from '@/lib/garage-context';
 import Badge from '@/components/ui/Badge';
+import WishlistButton from '@/components/shop/WishlistButton';
 import ProductCard from './ProductCard';
 
 interface ProductDetailProps {
@@ -253,6 +254,8 @@ export default function ProductDetail({ product, relatedProducts }: ProductDetai
               <ShoppingCart className="h-5 w-5" />
               {inCart ? 'Added — View Cart' : 'Add to Cart'}
             </button>
+
+            <WishlistButton productId={product.id} size="md" />
           </div>
 
           {/* Trust Badges */}

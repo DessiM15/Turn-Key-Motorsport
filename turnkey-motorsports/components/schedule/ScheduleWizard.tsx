@@ -196,6 +196,8 @@ export default function ScheduleWizard() {
         appointmentDate={form.appointmentDate}
         appointmentTime={form.appointmentTime}
         name={form.name}
+        email={form.email}
+        phone={form.phone}
         onScheduleAnother={handleScheduleAnother}
       />
     );

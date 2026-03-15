@@ -243,13 +243,31 @@ export interface AppointmentRequest {
   submittedAt: string;
 }
 
-// --- User Account (scaffolded) ---
+// --- User Account ---
+
+export interface NotificationPreferences {
+  orderUpdates: boolean;
+  appointmentUpdates: boolean;
+  newsletter: boolean;
+  promotions: boolean;
+}
+
+export interface AuthUser {
+  id: string;
+  name: string;
+  email: string;
+  phone: string;
+  passwordHash: string;
+  createdAt: string;
+  notificationPrefs: NotificationPreferences;
+}
 
 export interface SavedVehicle {
   id: string;
   year: number;
   make: string;
   model: string;
+  engine?: string;
   nickname?: string;
 }
 
@@ -285,11 +303,14 @@ export interface UserAccount {
   id: string;
   name: string;
   email: string;
-  phone?: string;
+  phone: string;
   savedVehicles: SavedVehicle[];
   addresses: Address[];
   wishlistProductIds: string[];
   orderHistory: Order[];
+  appointmentRefs: string[];
+  notificationPrefs: NotificationPreferences;
+  createdAt: string;
 }
 
 // --- Cart ---

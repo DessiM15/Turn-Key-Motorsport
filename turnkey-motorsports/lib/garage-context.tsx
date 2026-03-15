@@ -27,6 +27,8 @@ interface GarageContextValue {
   openGarage: () => void;
   closeGarage: () => void;
   toggleGarage: () => void;
+  vehicleJustAdded: boolean;
+  clearVehicleJustAdded: () => void;
 }
 
 // --- Constants ---
@@ -76,6 +78,7 @@ export function GarageProvider({ children }: GarageProviderProps) {
   const [activeId, setActiveId] = useState<string | null>(null);
   const [isGarageOpen, setIsGarageOpen] = useState(false);
   const [hydrated, setHydrated] = useState(false);
+  const [vehicleJustAdded, setVehicleJustAdded] = useState(false);
 
   // Load from localStorage on mount
   useEffect(() => {
@@ -114,6 +117,8 @@ export function GarageProvider({ children }: GarageProviderProps) {
       }
       return prev;
     });
+    // Signal that a vehicle was just added (for toast prompt)
+    setVehicleJustAdded(true);
   }, []);
 
   const removeVehicle = useCallback((id: string) => {
@@ -173,6 +178,7 @@ export function GarageProvider({ children }: GarageProviderProps) {
   const openGarage = useCallback(() => setIsGarageOpen(true), []);
   const closeGarage = useCallback(() => setIsGarageOpen(false), []);
   const toggleGarage = useCallback(() => setIsGarageOpen((prev) => !prev), []);
+  const clearVehicleJustAdded = useCallback(() => setVehicleJustAdded(false), []);
 
   const value: GarageContextValue = {
     vehicles,
@@ -187,6 +193,8 @@ export function GarageProvider({ children }: GarageProviderProps) {
     openGarage,
     closeGarage,
     toggleGarage,
+    vehicleJustAdded,
+    clearVehicleJustAdded,
   };
 
   return <GarageContext value={value}>{children}</GarageContext>;

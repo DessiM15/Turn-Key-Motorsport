@@ -5,10 +5,13 @@ import Link from 'next/link';
 import { ArrowLeft, Eye, CheckCircle } from 'lucide-react';
 import { z } from 'zod';
 import { useCart } from '@/lib/cart-context';
+import { useAuth } from '@/lib/auth-context';
+import { addOrder, addAddress } from '@/lib/data/user-store';
 import { cn, formatPrice } from '@/lib/utils';
 import Button from '@/components/ui/Button';
 import SquareCardForm from '@/components/shop/SquareCardForm';
 import type { SquareCardFormHandle } from '@/components/shop/SquareCardForm';
+import AccountBanner from '@/components/prompts/AccountBanner';
 
 const CheckoutSchema = z.object({
   email: z.string().email('Please enter a valid email address'),
@@ -36,6 +39,7 @@ const INITIAL_FORM: CheckoutFormData = {
 
 export default function CheckoutForm() {
   const { items, cartTotal, clearCart } = useCart();
+  const { isLoggedIn, user, refreshAccount } = useAuth();
   const [form, setForm] = useState<CheckoutFormData>(INITIAL_FORM);
   const [errors, setErrors] = useState<Partial<Record<keyof CheckoutFormData, string>>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -123,7 +127,37 @@ export default function CheckoutForm() {
       }
 
       const successData = data as { orderNumber?: string };
-      setOrderNumber(successData.orderNumber ?? '');
+      const confirmedOrderNumber = successData.orderNumber ?? '';
+      setOrderNumber(confirmedOrderNumber);
+
+      // Save order and address to account if logged in
+      if (isLoggedIn && user) {
+        addOrder(user.id, {
+          orderNumber: confirmedOrderNumber,
+          items: items.map((item) => ({
+            productId: item.productId,
+            productName: item.name,
+            quantity: item.quantity,
+            price: item.price,
+            image: item.image,
+          })),
+          total: orderTotal,
+          status: 'pending',
+          createdAt: new Date().toISOString(),
+        });
+
+        addAddress(user.id, {
+          label: 'Shipping',
+          street: result.data.address,
+          city: result.data.city,
+          state: result.data.state,
+          zip: result.data.zip,
+          isDefault: false,
+        });
+
+        refreshAccount();
+      }
+
       clearCart();
       setIsComplete(true);
     } catch {
@@ -154,6 +188,17 @@ export default function CheckoutForm() {
         >
           Continue Shopping
         </Link>
+
+        <div className="mt-4 w-full max-w-md">
+          <AccountBanner
+            promptId="checkout-account"
+            heading="Track your order with one click"
+            description="Set a password to create your account and view order status anytime."
+            prefillName={`${form.firstName} ${form.lastName}`}
+            prefillEmail={form.email}
+            prefillPhone={form.phone}
+          />
+        </div>
       </div>
     );
   }

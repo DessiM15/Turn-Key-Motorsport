@@ -2,9 +2,10 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { X, ChevronDown, Search, User, ShoppingCart } from 'lucide-react';
+import { X, ChevronDown, Search, User, LogIn, ShoppingCart } from 'lucide-react';
 import { MAIN_NAV, SOCIAL_LINKS, CONTACT_INFO } from '@/lib/constants';
 import { cn } from '@/lib/utils';
+import { useAuth } from '@/lib/auth-context';
 
 interface MobileNavProps {
   isOpen: boolean;
@@ -12,6 +13,7 @@ interface MobileNavProps {
 }
 
 export default function MobileNav({ isOpen, onClose }: MobileNavProps) {
+  const { isLoggedIn, user } = useAuth();
   const [expandedItems, setExpandedItems] = useState<Set<string>>(new Set());
 
   useEffect(() => {
@@ -82,14 +84,25 @@ export default function MobileNav({ isOpen, onClose }: MobileNavProps) {
             <Search className="h-4 w-4" />
             Search
           </Link>
-          <Link
-            href="/account"
-            onClick={onClose}
-            className="flex items-center gap-2 text-sm text-text-secondary hover:text-white"
-          >
-            <User className="h-4 w-4" />
-            Account
-          </Link>
+          {isLoggedIn ? (
+            <Link
+              href="/account"
+              onClick={onClose}
+              className="flex items-center gap-2 text-sm text-text-secondary hover:text-white"
+            >
+              <User className="h-4 w-4" />
+              {user?.name?.split(' ')[0] ?? 'Account'}
+            </Link>
+          ) : (
+            <Link
+              href="/login"
+              onClick={onClose}
+              className="flex items-center gap-2 text-sm text-text-secondary hover:text-white"
+            >
+              <LogIn className="h-4 w-4" />
+              Sign In
+            </Link>
+          )}
           <Link
             href="/checkout"
             onClick={onClose}

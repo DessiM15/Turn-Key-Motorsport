@@ -3,17 +3,19 @@
 import { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Search, User, ShoppingCart, Car, Menu, ChevronDown } from 'lucide-react';
+import { Search, User, LogIn, ShoppingCart, Car, Menu, ChevronDown } from 'lucide-react';
 import { MAIN_NAV } from '@/lib/constants';
 import { cn } from '@/lib/utils';
 import { useCart } from '@/lib/cart-context';
 import { useGarage } from '@/lib/garage-context';
+import { useAuth } from '@/lib/auth-context';
 import MegaMenu from './MegaMenu';
 import MobileNav from './MobileNav';
 
 export default function Header() {
   const { cartCount, openCart } = useCart();
   const { vehicles, toggleGarage } = useGarage();
+  const { isLoggedIn, user } = useAuth();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMegaMenuOpen, setIsMegaMenuOpen] = useState(false);
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
@@ -122,14 +124,27 @@ export default function Header() {
               <Search className="h-5 w-5" />
             </button>
 
-            {/* Account */}
-            <Link
-              href="/account"
-              className="hidden rounded-lg p-2 text-text-secondary transition-colors hover:bg-surface hover:text-white lg:flex"
-              aria-label="Account"
-            >
-              <User className="h-5 w-5" />
-            </Link>
+            {/* Account / Sign In */}
+            {isLoggedIn ? (
+              <Link
+                href="/account"
+                className="hidden items-center gap-1.5 rounded-lg px-2 py-1.5 text-text-secondary transition-colors hover:bg-surface hover:text-white lg:flex"
+                aria-label="My Account"
+              >
+                <div className="flex h-6 w-6 items-center justify-center rounded-full bg-accent/20 text-[10px] font-bold text-accent">
+                  {user?.name?.charAt(0)?.toUpperCase() ?? 'U'}
+                </div>
+              </Link>
+            ) : (
+              <Link
+                href="/login"
+                className="hidden items-center gap-1.5 rounded-lg px-3 py-1.5 text-sm text-text-secondary transition-colors hover:bg-surface hover:text-white lg:flex"
+                aria-label="Sign In"
+              >
+                <LogIn className="h-4 w-4" />
+                <span className="text-xs font-medium">Sign In</span>
+              </Link>
+            )}
 
             {/* Garage */}
             <button
