@@ -10,9 +10,10 @@ import { useAuth } from '@/lib/auth-context';
 interface MobileNavProps {
   isOpen: boolean;
   onClose: () => void;
+  onOpenSearch?: () => void;
 }
 
-export default function MobileNav({ isOpen, onClose }: MobileNavProps) {
+export default function MobileNav({ isOpen, onClose, onOpenSearch }: MobileNavProps) {
   const { isLoggedIn, user } = useAuth();
   const [expandedItems, setExpandedItems] = useState<Set<string>>(new Set());
 
@@ -76,14 +77,13 @@ export default function MobileNav({ isOpen, onClose }: MobileNavProps) {
 
         {/* Utility Links */}
         <div className="flex items-center gap-4 border-b border-border px-4 py-3">
-          <Link
-            href="/shop"
-            onClick={onClose}
+          <button
+            onClick={onOpenSearch}
             className="flex items-center gap-2 text-sm text-text-secondary hover:text-white"
           >
             <Search className="h-4 w-4" />
             Search
-          </Link>
+          </button>
           {isLoggedIn ? (
             <Link
               href="/account"

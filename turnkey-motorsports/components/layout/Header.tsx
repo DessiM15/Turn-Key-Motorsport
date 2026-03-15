@@ -11,6 +11,7 @@ import { useGarage } from '@/lib/garage-context';
 import { useAuth } from '@/lib/auth-context';
 import MegaMenu from './MegaMenu';
 import MobileNav from './MobileNav';
+import SearchModal from '@/components/search/SearchModal';
 
 export default function Header() {
   const { cartCount, openCart } = useCart();
@@ -20,6 +21,7 @@ export default function Header() {
   const [isMegaMenuOpen, setIsMegaMenuOpen] = useState(false);
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   const handleScroll = useCallback(() => {
     setIsScrolled(window.scrollY > 20);
@@ -29,6 +31,18 @@ export default function Header() {
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, [handleScroll]);
+
+  // Cmd/Ctrl+K to open search
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault();
+        setIsSearchOpen(true);
+      }
+    };
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, []);
 
   const handleNavHover = (label: string, hasMegaMenu?: boolean) => {
     if (hasMegaMenu) {
@@ -118,10 +132,14 @@ export default function Header() {
           <div className="flex items-center gap-2">
             {/* Search */}
             <button
-              className="hidden rounded-lg p-2 text-text-secondary transition-colors hover:bg-surface hover:text-white lg:flex"
+              onClick={() => setIsSearchOpen(true)}
+              className="hidden items-center gap-2 rounded-lg p-2 text-text-secondary transition-colors hover:bg-surface hover:text-white lg:flex"
               aria-label="Search"
             >
               <Search className="h-5 w-5" />
+              <kbd className="rounded border border-border bg-surface/50 px-1.5 py-0.5 text-[10px] font-medium text-text-tertiary">
+                Ctrl K
+              </kbd>
             </button>
 
             {/* Account / Sign In */}
@@ -198,6 +216,13 @@ export default function Header() {
       <MobileNav
         isOpen={isMobileNavOpen}
         onClose={() => setIsMobileNavOpen(false)}
+        onOpenSearch={() => { setIsMobileNavOpen(false); setIsSearchOpen(true); }}
+      />
+
+      {/* Search Modal */}
+      <SearchModal
+        isOpen={isSearchOpen}
+        onClose={() => setIsSearchOpen(false)}
       />
     </>
   );
