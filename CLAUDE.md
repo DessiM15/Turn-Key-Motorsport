@@ -162,11 +162,32 @@ Recommendation: [CONTINUE / HANDOFF]
 ────────────────────────────────────────
 ```
 
-Estimation method: count your total output so far + files read. Assume 200k context window. If remaining tokens are under 40k, recommend HANDOFF.
+Estimation method: count your total output so far + files read. Assume 1M context window. If remaining tokens are under 200k, recommend HANDOFF.
 
 **If recommending HANDOFF**, automatically run the Handoff Protocol below before stopping.
 
 **If user asks to continue despite a HANDOFF recommendation**, warn once then proceed. Update BUILD-STATE.md more frequently (after every file change, not just every stage).
+
+### 80% THRESHOLD WARNING (mid-stage, per-response check)
+
+Stage boundaries are not reliable — polish/debug work can burn tons of context between stages. So:
+
+**On EVERY response, silently estimate context usage. If usage crosses 80% (≈800k on a 1M window, ≈200k remaining), do ALL of the following before continuing the task:**
+
+1. Prepend this exact block to the top of the response:
+   ```
+   ⚠️ CONTEXT WARNING — 80% FULL
+   Tokens used: ~[estimate] / 1M
+   Remaining: ~[estimate]
+   Recommend: HANDOFF NOW before forced compaction.
+   ```
+2. Ask the user: **"Handoff now, or continue and risk compaction?"**
+3. If user says handoff → run Handoff Protocol.
+4. If user says continue → proceed but update `_BUILD/BUILD-STATE.md` after every single file change (not just stage boundaries) so a forced compaction loses minimal state.
+
+Fire this warning ONCE per session — don't spam. After firing, only re-warn if usage crosses 90%.
+
+Include large file reads (anything flagged "too large to include") and image attachments in the estimate — these are the biggest silent context burners.
 
 ---
 
